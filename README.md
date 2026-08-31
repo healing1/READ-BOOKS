@@ -1,9 +1,7 @@
-# deep work
+# READ BOOKS
 
-Workspace for deep-work projects.
+Reading notes and book workspace.
 
 ## Layout
 
-(To be filled in as projects are added.)
-
-- `.` — project root
+(To be filled in as content is added.)
