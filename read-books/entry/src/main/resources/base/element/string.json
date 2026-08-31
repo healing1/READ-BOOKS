@@ -1,0 +1,16 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "READ BOOKS 鸿蒙阅读器"
+    },
+    {
+      "name": "ability_desc",
+      "value": "READ BOOKS"
+    },
+    {
+      "name": "app_name",
+      "value": "READ BOOKS"
+    }
+  ]
+}
