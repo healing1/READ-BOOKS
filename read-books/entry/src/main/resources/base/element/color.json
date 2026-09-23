@@ -3,7 +3,7 @@
     { "name": "start_window_background", "value": "#F2F2F7" },
     { "name": "primary", "value": "#007AFF" },
     { "name": "on_primary", "value": "#FFFFFF" },
-    { "name": "background", "value": "#F2F2F7" },
+    { "name": "background", "value": "#FFFFFF" },
     { "name": "surface", "value": "#FFFFFF" },
     { "name": "surface_elevated", "value": "#FFFFFF" },
     { "name": "label_primary", "value": "#000000" },
@@ -12,7 +12,16 @@
     { "name": "separator", "value": "#E5E5EA" },
     { "name": "destructive", "value": "#FF3B30" },
     { "name": "success", "value": "#34C759" },
-    { "name": "hud_bar", "value": "#FFFFFFE6" },
-    { "name": "brand_tint", "value": "#007AFF14" }
+    { "name": "hud_bar", "value": "#E6FFFFFF" },
+    { "name": "brand_tint", "value": "#14007AFF" },
+    { "name": "glass_surface", "value": "#C8F0F0F2" },
+    { "name": "glass_selected", "value": "#D9FFFFFF" },
+    { "name": "glass_edge", "value": "#6098989B" },
+    { "name": "secondary_fill", "value": "#F1F1F3" },
+    { "name": "goal_accent", "value": "#0794B5" },
+    { "name": "glass_highlight", "value": "#CFFFFFFF" },
+    { "name": "feature_surface", "value": "#F4F0EB" },
+    { "name": "feature_end", "value": "#E7DFD3" },
+    { "name": "card_edge", "value": "#14000000" }
   ]
 }

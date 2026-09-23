@@ -7,8 +7,7 @@
       "arkOptions": {
         "obfuscation": {
           "ruleOptions": {
-            "enable": false,
-            "options": {}
+            "enable": false
           }
         }
       }
@@ -17,6 +16,9 @@
   "targets": [
     {
       "name": "default"
+    },
+    {
+      "name": "ohosTest"
     }
   ]
 }

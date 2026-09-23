@@ -1,139 +1,158 @@
-import { Chapter, LineInfo, Page } from '../model/Models';
+import { taskpool } from '@kit.ArkTS';
+import { Chapter, Page } from '../model/Models';
+import { LayoutConstraints, Measurer, PaginationCore } from './PaginationCore';
+import { paginateInBackground } from './PaginationWorker';
 
-/** 文本测量器（UI 侧注入 Canvas 实现，引擎保持纯逻辑） —— docs/DESIGN.md §5.4 */
-export interface Measurer {
-  measure(ch: string): number;
-}
-
-export interface LayoutConstraints {
-  widthPx: number;
-  heightPx: number;
-  padLeftPx: number;
-  padRightPx: number;
-  padTopPx: number;
-  padBottomPx: number;
-  fontSizePx: number;
-  lineHeightRatio: number;
-}
+export { LayoutConstraints, Measurer } from './PaginationCore';
 
 /**
  * 分页器 —— docs/DESIGN.md §5.4
  * 贪心组行：字符宽度缓存 + 视口宽度断行；段首缩进 2em、段间距 0.4 行、空行 0.8 行
- * MVP 在 UI 线程按章惰性分页 + LRU 缓存；TaskPool 后台预分页为既定演进方向
+ * 当前章优先，异步字宽准备 + TaskPool 纯计算；同步接口供测试和兼容调用。
  */
 export class Paginator {
   static paginateChapter(text: string, chapter: Chapter, lc: LayoutConstraints, measurer: Measurer): Page[] {
-    const pages: Page[] = [];
-    const maxW: number = lc.widthPx - lc.padLeftPx - lc.padRightPx;
-    if (maxW <= 0 || lc.fontSizePx <= 0) {
-      return pages;
+    if (measurer.prepare !== undefined) {
+      measurer.prepare();
     }
-    const contentBottom: number = lc.heightPx - lc.padBottomPx;
-    const lineH: number = lc.fontSizePx * lc.lineHeightRatio;
-    const paraGap: number = lineH * 0.4;
-    const blankGap: number = lineH * 0.8;
-    const indentStr: string = '　　';
-    const indentW: number = measurer.measure('　') * 2;
+    return PaginationCore.paginate(text.substring(chapter.startOffset, chapter.endOffset),
+      chapter.idx, chapter.startOffset, lc, measurer);
+  }
 
-    const body: string = text.substring(chapter.startOffset, chapter.endOffset);
-    const total: number = body.length;
-    let lines: LineInfo[] = [];
-    let y: number = lc.padTopPx;
-    let pageStart: number = -1;
-    let pageEnd: number = -1;
+  /** 每批最多 1024 字符 / 64 次原生测量后让出 UI；调用端用布局 generation 取消旧任务。 */
+  static async paginateChapterAsync(text: string, chapter: Chapter, lc: LayoutConstraints,
+    measurer: Measurer, isCurrent?: () => boolean): Promise<Page[]> {
+    return Paginator.paginateBodyAsync(text.substring(chapter.startOffset, chapter.endOffset),
+      chapter, lc, measurer, isCurrent);
+  }
 
+  /** 从磁盘单独读取的章节正文：body 是局部字符串，Page 锚点仍为全书 UTF-16 字符偏移。 */
+  static async paginateBodyAsync(body: string, chapter: Chapter, lc: LayoutConstraints,
+    measurer: Measurer, isCurrent?: () => boolean): Promise<Page[]> {
+    const widths: Map<string, number> = new Map<string, number>();
     let pos: number = 0;
-    while (pos < total) {
-      const nl: number = body.indexOf('\n', pos);
-      const paraEnd: number = nl === -1 ? total : nl;
-      const para: string = body.substring(pos, paraEnd);
-      if (para.length === 0) {
-        y += blankGap;
-      } else {
-        let i: number = 0;
-        let firstLine: boolean = true;
-        while (i < para.length) {
-          let w: number = firstLine ? indentW : 0;
-          let j: number = i;
-          while (j < para.length) {
-            const cw: number = measurer.measure(para.charAt(j));
-            if (w + cw > maxW && j > i) {
-              break;
-            }
-            w += cw;
-            j++;
-          }
-          const absStart: number = chapter.startOffset + pos + i;
-          const absEnd: number = chapter.startOffset + pos + j;
-          if (y + lineH > contentBottom) {
-            if (lines.length > 0) {
-              pages.push(new Page(chapter.idx, pageStart, pageEnd, lines));
-            }
-            lines = [];
-            y = lc.padTopPx;
-            pageStart = -1;
-            pageEnd = -1;
-          }
-          if (pageStart === -1) {
-            pageStart = absStart;
-          }
-          const lineText: string = (firstLine ? indentStr : '') + para.substring(i, j);
-          lines.push(new LineInfo(lineText, y));
-          pageEnd = absEnd;
-          y += lineH;
-          i = j;
-          firstLine = false;
+    while (pos < body.length || widths.size === 0) {
+      if (isCurrent !== undefined && !isCurrent()) {
+        throw new Error('Pagination request superseded');
+      }
+      if (measurer.prepare !== undefined) {
+        measurer.prepare();
+      }
+      if (!widths.has('　')) {
+        widths.set('　', measurer.measure('　'));
+      }
+      const batchEnd: number = Math.min(body.length, pos + 1024);
+      let measurements: number = 0;
+      while (pos < batchEnd && measurements < 64) {
+        const glyph: string = PaginationCore.glyphAt(body, pos);
+        if (glyph !== '\n' && !widths.has(glyph)) {
+          widths.set(glyph, measurer.measure(glyph));
+          measurements++;
         }
-        y += paraGap;
+        pos += glyph.length;
       }
-      if (nl === -1) {
-        break;
+      if (pos < body.length) {
+        await new Promise<void>((resolve: () => void) => {
+          setTimeout(resolve, 0);
+        });
       }
-      pos = nl + 1;
     }
-    if (lines.length > 0) {
-      pages.push(new Page(chapter.idx, pageStart, pageEnd, lines));
+    if (isCurrent !== undefined && !isCurrent()) {
+      throw new Error('Pagination request superseded');
     }
-    if (pages.length === 0) {
-      pages.push(new Page(chapter.idx, chapter.startOffset, chapter.startOffset, []));
+    const pages: Page[] = await taskpool.execute(paginateInBackground, body, chapter.idx,
+      chapter.startOffset, lc, widths) as Page[];
+    if (isCurrent !== undefined && !isCurrent()) {
+      throw new Error('Pagination request superseded');
     }
     return pages;
   }
 
   static locateByOffset(pages: Page[], offset: number): number {
-    for (let i = 0; i < pages.length; i++) {
-      if (offset < pages[i].endOffset) {
-        return i;
+    if (pages.length === 0) {
+      return -1;
+    }
+    if (!Number.isFinite(offset) || offset <= pages[0].startOffset) {
+      return 0;
+    }
+    let low: number = 0;
+    let high: number = pages.length - 1;
+    while (low < high) {
+      const mid: number = Math.floor((low + high) / 2);
+      if (offset < pages[mid].endOffset) {
+        high = mid;
+      } else {
+        low = mid + 1;
       }
     }
-    return pages.length - 1;
+    return low;
   }
 }
 
-/** 章节页缓存（LRU） */
+/** 双重上限的章节 LRU；只保留一章时允许超页数上限，防止大章节反复重算。 */
 export class PageCache {
   private map: Map<number, Page[]> = new Map<number, Page[]>();
   private order: number[] = [];
-  private capacity: number = 12;
+  private capacity: number;
+  private maxPages: number;
+  private pageCount: number = 0;
+  private pinned: Set<number> = new Set<number>();
+
+  constructor(capacity: number = 12, maxPages: number = 240) {
+    this.capacity = Math.max(1, capacity);
+    this.maxPages = Math.max(1, maxPages);
+  }
+
+  /** 当前双页与即时翻页所需章节不可逐出；更换保护集合后立即恢复对旧章的淘汰。 */
+  setPinned(chapterIndices: number[]): void {
+    this.pinned = new Set<number>(chapterIndices);
+    this.trim();
+  }
 
   put(chapterIdx: number, pages: Page[]): void {
-    const exist = this.order.indexOf(chapterIdx);
+    const old: Page[] | undefined = this.map.get(chapterIdx);
+    if (old !== undefined) {
+      this.pageCount -= old.length;
+    }
+    const exist: number = this.order.indexOf(chapterIdx);
     if (exist >= 0) {
       this.order.splice(exist, 1);
     }
     this.map.set(chapterIdx, pages);
     this.order.push(chapterIdx);
-    while (this.order.length > this.capacity) {
-      const oldest = this.order.shift();
-      if (oldest !== undefined) {
-        this.map.delete(oldest);
+    this.pageCount += pages.length;
+    this.trim();
+  }
+
+  private trim(): void {
+    while (this.order.length > this.capacity || (this.pageCount > this.maxPages && this.order.length > 1)) {
+      let oldestIndex: number = -1;
+      for (let i: number = 0; i < this.order.length; i++) {
+        if (!this.pinned.has(this.order[i])) {
+          oldestIndex = i;
+          break;
+        }
       }
+      if (oldestIndex < 0) {
+        // 上限为软限制：必需的双页/相邻章节全部被保护时不牺牲正在阅读的内容。
+        break;
+      }
+      const oldest: number = this.order[oldestIndex];
+      this.order.splice(oldestIndex, 1);
+      const removed: Page[] | undefined = this.map.get(oldest);
+      this.pageCount -= removed === undefined ? 0 : removed.length;
+      this.map.delete(oldest);
     }
   }
 
   get(chapterIdx: number): Page[] | null {
     const hit = this.map.get(chapterIdx);
     if (hit !== undefined) {
+      const index: number = this.order.indexOf(chapterIdx);
+      if (index >= 0) {
+        this.order.splice(index, 1);
+      }
+      this.order.push(chapterIdx);
       return hit;
     }
     return null;
@@ -142,5 +161,7 @@ export class PageCache {
   clear(): void {
     this.map.clear();
     this.order = [];
+    this.pageCount = 0;
+    this.pinned.clear();
   }
 }

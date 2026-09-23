@@ -1,6 +1,8 @@
 {
   "src": [
     "pages/Bookshelf",
-    "pages/Reader"
+    "pages/Reader",
+    "pages/PdfReader",
+    "pages/EpubReader"
   ]
 }

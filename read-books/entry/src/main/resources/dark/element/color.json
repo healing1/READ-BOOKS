@@ -12,7 +12,16 @@
     { "name": "separator", "value": "#3A3A3C" },
     { "name": "destructive", "value": "#FF453A" },
     { "name": "success", "value": "#30D158" },
-    { "name": "hud_bar", "value": "#1C1C1EE6" },
-    { "name": "brand_tint", "value": "#0A84FF1F" }
+    { "name": "hud_bar", "value": "#E61C1C1E" },
+    { "name": "brand_tint", "value": "#1F0A84FF" },
+    { "name": "glass_surface", "value": "#AA242426" },
+    { "name": "glass_selected", "value": "#BD515153" },
+    { "name": "glass_edge", "value": "#706D6D70" },
+    { "name": "secondary_fill", "value": "#242426" },
+    { "name": "goal_accent", "value": "#36C8E9" },
+    { "name": "glass_highlight", "value": "#42FFFFFF" },
+    { "name": "feature_surface", "value": "#26282B" },
+    { "name": "feature_end", "value": "#36322E" },
+    { "name": "card_edge", "value": "#20FFFFFF" }
   ]
 }

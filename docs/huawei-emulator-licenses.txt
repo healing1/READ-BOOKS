@@ -1,0 +1,1172 @@
+1/4:
+---------------------------------------
+Statement About HarmonyOS and Privacy
+
+Last updated: July 10, 2025
+
+HarmonyOS is a next-generation operating system for smart devices, providing a unified language for enabling intelligence, interconnection, and collaboration across different devices. It gives a neat, smooth, seamless, secure, and reliable interaction experience in all scenarios. HarmonyOS and related system services (hereinafter referred to as the "Services") are provided for you by Huawei Device Co., Ltd. (hereinafter referred to as "Huawei", "we", "us", or "our"), which is registered at No. 2 Xincheng Road, Songshan Lake Zone, Dongguan, Guangdong.
+
+Huawei takes your personal information and privacy seriously, and is committed to taking appropriate security measures to protect your personal information in accordance with relevant laws and established industry security standards. We have specially formulated this Statement to help you learn about how the Services collect, use, disclose, protect, store, and transmit your personal information. Please read this Statement carefully.
+
+In addition to the Services, HarmonyOS enables you to access and use Huawei or third-party apps and services that are pre-installed or downloaded by you. For information such as that about how these apps and services process your personal information, please refer to their privacy statements.
+
+1 How We Collect and Use Your Personal Information
+
+We will provide you with the system services described below based on HarmonyOS. We will process information required for providing the features/services as described below when you use them. If you do not provide the related information, your use of the Services may be affected.
+
+1.1 Software update services
+
+Software update services are basic services for updating the system on your device. During use, the services need to connect to the Internet to check for and download updates as well as to perform business operation and maintenance analysis, thereby providing the system update services.
+
+(1) System ROM updates
+
+To update your system in a timely manner for improving our products (or services), we need to collect your following information: device identifiers (including SN and SOCID), device model, system settings, operating system, system configuration information, system properties, IP address, and WLAN information (Wi-Fi status). Among the information, the WLAN information (Wi-Fi status) will only be processed locally and will not be uploaded to any Huawei server.
+
+We will use your personal information in the following ways: The aforementioned information you provide will be used to find and push suitable ROM versions for your device. To address potential risks in the system, the latest version will be downloaded and then used for an automatic update with your consent or when required to fix urgent system security loopholes.
+
+(2) Business operation and maintenance analysis
+
+To improve your update experience, we need to collect your following information: device identifiers (including SN), device model, system settings, operating system, system configuration information, system properties, IP address, and WLAN information (Wi-Fi status). A device analysis report will be generated for business operation and service analysis and improvement. Information in the report is statistically aggregated and cannot be used to identify you.
+
+1.2 Message pushing services
+
+Message pushing services enable us and other app developers to send push messages to your device. To ensure the delivery of messages, we need to establish a secure and reliable message sending channel between your device and the push server. During your use of an app or service, we will collect and use your following information and upload the information to the Huawei server: network information, device model, device identifier, system settings, operating system, device hardware information, device status and running records, WLAN information (Wi-Fi status), and basic app information. To locate app problems and improve services, we will collect and use your following information for product O&M during your app or service use: network information, device model, device identifier, system settings, operating system, device hardware information, device status and running records, WLAN information (Wi-Fi status), and basic app information.
+
+1.3 System-level web services
+
+System-level web services provide you with basic features related to web browsing. The services need to connect to the Internet. During your use of the services, relevant configuration data will be downloaded based on the enabled features.
+
+1.4 Digital rights management services
+
+Digital rights management (DRM) services provide secure data encryption and decryption to furnish copyright protection for digital assets on your device. The services need to connect to the Internet and collect and use your device name, device model, SOCID, and operating system version to issue DRM certificates and perform copyright protection.
+
+1.5 Basic AppGallery services
+
+Basic AppGallery services provide download, installation, and management features based on apps. During use, the services need to connect to the Internet and read the WLAN information (Wi-Fi status and Wi-Fi parameters) to provide features such as app download and network notification, and read and transmit your list of installed apps to provide features such as security check and risk alerts, unified privacy pop-up information, on-demand app loading, and malicious redirection control. This ensures secure app download and use, and prevents fraud and other malicious activities. Among the information, your list of installed apps will not be stored on the cloud.
+
+1.6 System storage services
+
+System storage services include calendar storage services. Calendar storage services provide basic capabilities such as calendar event storage, access, and reminder notification. During use, the services need to read the calendar event data to record and save event reminders so that they can be made available to apps.
+
+1.7 Auto-discovery services
+
+Auto-discovery services provide the capability to automatically discover supported devices nearby and prompt you to complete the connection and authentication process. During use, the services need to connect to the Internet, use Bluetooth, and read and transmit the Bluetooth MAC address and WLAN MAC address for the purposes of near-field device discovery, authentication, and connection.
+
+1.8 Common security services
+
+Common security services provide basic security capabilities for your device, such as device certificate management and encrypted data sharing. During your use of the services, device certificate management needs to connect to the Internet and read and transmit the device identifier, which will be used to apply for and update the device certificates, thereby providing device identity authentication services based on the device certificates. Encrypted data sharing needs to connect to the Internet, read and transmit the HUAWEI ID information and device identifier for applying for data protection credentials, and use the phone number or email address you submit to query the corresponding HUAWEI ID (account UID, profile picture, and nickname), thereby providing the HUAWEI ID-based feature to share data with encryption security.
+
+1.9 Basic HarmonyOS Connect services
+
+Basic HarmonyOS Connect services provide upper-layer apps with APIs for device discovery, network configuration, registration and addition, and control and management. Information involved in the APIs includes the HUAWEI ID information, device information (including device hardware information, device identifier (including SN), MAC address, and device name), and personalized device settings (including IoT smart device service parameters). The aforementioned information will only be collected when the upper-layer apps use the APIs provided by the services. For details about the collection scenarios, please refer to the descriptions provided by the upper-layer apps. During use, the services need to connect to the Internet and use Bluetooth, NearLink (supported only by some devices), and WLAN.
+
+1.10 Picker services
+
+Picker services are system component capabilities we provide for developers and users. If an app that has integrated the picker services requests access to any sensitive data stored in the system (including media data, and file data) or any sensitive system components (including camera and microphone), the operating system will provide an interface to directly interact with the user, thereby restricting direct access by the app. In this way, user privacy can be better protected while the related app functionality is maintained.
+
+To provide the aforementioned feature, the picker services need to do the following: locally read the media data (images, videos, and audio) and file data, in order to display sensitive data to the user and allow the user to select sensitive data that can be accessed by the app; or enable the camera or microphone, in order to allow the user to easily access features such as taking photos or recording videos. Particularly, in the case of accessing file data, the file picker service will locally read the list of installed apps to display the file processing capabilities (such as format conversion, compression, and encryption) that file processing apps provide for the user.
+
+1.11 Basic system analysis services
+
+Basic system analysis services provide the capabilities to measure system running and interface calling, to ensure long-term stable running of the device. During use, the services need to connect to the Internet and collect the random device identifier, system settings, system properties, device model, MAC address, WLAN information (Wi-Fi connection status, Wi-Fi parameters, and Wi-Fi list), Bluetooth device list, motion status, approximate location information, operating system information, network information, running records, basic app information, app running status, and interface calling information, which will be used for product operation and user experience improvement.
+
+1.12 Management services in Security & Privacy Center
+
+Management services in Security & Privacy Center provide you with the permission management capabilities related to security and privacy. During your use of the services, permission management needs to read the images, videos, and list of installed apps to display the number of images and videos in the section of the Images & videos permission, and display the status of the permission for different apps on the permission's details screen, thereby alerting you to risks of granting the permission.
+
+1.13 Device activation services
+
+During use, the services need to connect to the Internet and read and transmit the device identifiers (including SN), approximate location information, device model, and operating system information to identify and activate the device and generate benefit information, thereby protecting your benefits.
+
+1.14 Authentication proxy services
+
+Authentication proxy services provide capabilities such as HUAWEI ID authentication proxy and app identity legitimacy verification proxy, improving performance, experience, and reliability in authentication scenarios. During use, the services need to connect to the Internet, read the list of installed apps, and collect and use your HUAWEI ID information and device identifier to verify the legitimacy of your account and your apps' identities in advance. Among the information, the list of installed apps will only be processed locally and will not be uploaded to any Huawei server.
+
+2 Protection of Minors
+
+We attach great importance to the protection of minors' personal information. Huawei will provide services and protection for minors in strict accordance with national laws and regulations. If you are a minor, your parents or legal guardians must agree to your use of the Services, and agree to the applicable terms and conditions. Parents or legal guardians should also take appropriate precautions to protect minors, including monitoring their use of the Services.
+
+In particular, if you are a child (a minor under the age of 14), please make sure to notify your parents or legal guardians about carefully reading with you this Statement and the Huawei Consumer Business Statement About Children's Privacy Protection (https://legal.cloud.huawei.com/legal/child/privacy-statement.htm?code=CN&language=en-US) specifically formulated by us before you use our services, and use our services or provide information to us with the consent and guidance of your parents or legal guardians. If you are a parent or legal guardian, please ensure that the child under your guardianship uses our services and provides us with information with your consent or guidance.
+
+3 Entrusted Processing and Sharing of Information
+
+3.1 Entrusted processing
+
+In some service scenarios, we will entrust other companies to process your personal information on our behalf, for example, companies that handle hotline calls, send emails, or provide technical support on behalf of Huawei. Such companies can only use your personal information for the purposes of providing services to you on behalf of Huawei. Huawei will enter into strict entrusted processing agreements or personal information processing terms with the entrusted party. The entrusted party is obligated to process related personal information in accordance with this Statement and our instructions and to take relevant confidentiality and security measures to ensure personal information security.
+
+3.2 Sharing with third parties
+
+Currently, the Services do not involve sharing personal information with third parties.
+
+4 Managing Your Personal Information
+
+Huawei highly respects your concerns regarding personal information. You can submit to us requests to exercise your rights as a personal information subject, such as those to access, rectify, copy, or delete your personal information, through the official website of Huawei Consumer BG, the My HUAWEI app, or the privacy center based on HUAWEI ID.
+
+If you submit a request through any other channels, such as hotline, service email address, online customer service, and service center, we will guide you to submit a formal request through the aforementioned channels to facilitate communication and feedback on the handling progress and result. Huawei maintains a dedicated request channel for personal information subjects, which serves to protect legitimate interests of personal information subjects, safeguard Huawei's normal operations, and prevent unauthorized or abusive use of the request rights in relation to personal information.
+
+We will make every effort to ensure that a response is made within one month after a personal information subject's access request is submitted. Given the complexity and volume of requests, this timeframe may be appropriately extended when necessary. If the provision of information is delayed, we will notify the personal information subject of the situation and the reasons for the delay.
+
+If you have any further requests, questions, comments, or suggestions regarding your rights as a data subject, please contact us using the contact information provided under the "Contacting Us" section of this Statement.
+
+5 Information Storage Location and Retention Period
+
+5.1 Storage location
+
+The aforementioned information will be sent to and stored on servers in the People's Republic of China.
+
+5.2 Retention period
+
+During the provision of the Services, we will process your personal information on your device wherever possible. We will retain your personal information we collect only for the period necessary to fulfill the purposes described in this Statement, and delete or anonymize your personal information beyond the retention period, except as otherwise stipulated by applicable laws and regulations.
+
+In the software update services, personal information collected for system ROM updates will be retained for six (6) months, and personal information for business operation and maintenance analysis will be retained for five (5) years.
+
+Among information collected in the message pushing services: information used for product O&M will be retained on the server for up to five (5) years; while other personal information will be retained on the server for up to one (1) year.
+
+DRM certificates in the DRM services will remain valid for the lifecycle of your device and will be retained for ten (10) years together with the device information.
+
+Personal information collected in the common security services will be retained for up to three (3) years. Personal information collected by the encrypted data sharing services will be deleted immediately after you delete your HUAWEI ID.
+
+Information collected by the basic system analysis services will be retained for five (5) years.
+
+Personal information collected by the device activation services will be retained for seven (7) years.
+
+Personal information collected by the authentication proxy services will be retained for two (2) years.
+
+In the event that we discontinue our products or services, we will notify you in the form of a push notification, announcement, or by other means, and delete or anonymize your personal information within a reasonable period of time.
+
+6 Contacting Us
+
+We have appointed the person responsible for personal information protection who you can contact from here (https://consumer.huawei.com/en/legal/privacy-questions/). You may also contact us by visiting the Privacy Questions page (https://consumer.huawei.com/en/legal/privacy-questions/). We will reply as soon as possible.
+
+If you are not satisfied with the response you receive, especially if you feel that our processing or handling of your personal information has violated or infringed on your legal rights and/or interests, you may seek external resolution, whether by filing a lawsuit with the people's court in the relevant jurisdiction, submitting a complaint to the industry self-regulation association or relevant government regulatory agencies, or by other means. You may also consult us regarding the available channels for voicing your complaint. Huawei's collection and use of your personal information is governed by our privacy policy. For more information, please refer to the Huawei Consumer Business Privacy Statement (https://legal.cloud.huawei.com/legal/privacy/statement.htm?country=CN&language=en_US).
+
+
+2/4:
+---------------------------------------
+Statement About HUAWEI ID and Privacy
+
+Last updated: September 2, 2025
+
+HUAWEI ID comprises basic services that help you better use Huawei apps, services, websites, or non-Huawei services and enjoy a consistent and convenient service experience across devices logged in to the same account. It is provided by Huawei Software Technologies Co., Ltd. (hereinafter referred to as "Huawei", "we", "us", or "our"), which is registered at No. 101, Software Avenue, Yuhuatai District, Nanjing, Jiangsu. Huawei takes your personal information and privacy seriously, and is committed to taking appropriate security measures to protect your personal information in accordance with relevant laws and established industry security standards.
+
+Version Change Description
+
+Added the "Account contact picker service" subsection to the "How We Collect and Use Your Personal Information" section.
+
+Summary
+
+You can access the List of Personal Information Collected (https://legal.cloud.huawei.com/terms/scope/huawei/id-hmos/privacy-statement.htm?code=CN&branchid=0&language=en-US&contenttag=di) to briefly learn about the purpose, method, and scope of personal information collection and/or use in HUAWEI ID.
+
+Important Notes
+
+As your ID for accessing Huawei services, HUAWEI ID provides you with a consistent user experience and security authentication when you use services such as AppGallery, HUAWEI CLOUD, HUAWEI CLOUD Meeting, HUAWEI Video, and HUAWEI Music, as well as Huawei terminal devices and related services provided by partners.
+
+To provide you with a coherent, convenient, and secure account login experience when using Huawei services, your HUAWEI ID information may be shared among and used by the Huawei affiliates. We will only use your HUAWEI ID information within the Huawei affiliates for specific, clear, and legitimate purposes, and will only provide information that is necessary to provide the services.
+
+Information requested from you for real-name authentication (including your ID card and bank card information) as required by the authority will be provided to relevant organizations in encrypted form for verification to ensure security in accordance with regulatory provisions. We also maintain a risk control system to protect the rights of Huawei, you, and other Huawei customers, prevent fraud and other illegal activities, and reduce account risks.
+
+During the authentication of your HUAWEI ID, a Huawei app or service will first connect to the Internet to check your agreement signing records to verify whether you can normally access the app or service.
+
+HUAWEI ID may be launched in turn to provide you with the basic running services when you use a Huawei or third-party app.
+
+To ensure login and data security for your account and display the status of service cards you use, the Find Device, device management, Family Sharing, and Cloud services will be launched when you log in to your HUAWEI ID.
+
+Cloud will launch AppGallery when you restore apps, in order to help you restore apps to their latest versions in AppGallery.
+
+If a family organizer has enabled Mobile Guardian for a child or teenager, Mobile Guardian will be secondarily launched by Family Sharing on the device where the child or teenager logs in to their account.
+
+When you use the device management services of HUAWEI ID, AI Life will be secondarily launched to facilitate the management of devices under your control.
+
+On device running HarmonyOS 6.0 or later, during your use of the real-name authentication service of HUAWEI ID, Huawei Pay will be secondarily launched for completing facial verification.
+
+During your use of the profile picture setting feature of HUAWEI ID, Celia Photo Studio will be secondarily launched to provide you with the ability to generate photos with AI. In addition, Contacts will be secondarily launched to help you set who can view your profile picture in Contacts.
+
+The scope of services provided by HUAWEI ID and its underlying services may vary depending on the device type or operating system. Please acknowledge that some services may not be applicable to your device type or operating system. Services that are not provided will not collect your personal information or share your personal information with any third party.
+
+1 How We Collect and Use Your Personal Information
+
+1.1 We will provide you with the services described below through HUAWEI ID. To fulfill our contractual obligations and ensure that you can use the related features, we will process information required for providing the services as described below when you use the basic services of HUAWEI ID.
+
+1.1.1 Account features
+
+Registration and login
+
+You can register a HUAWEI ID using a mobile number. During the registration process , you need to provide your mobile number and set an account password for registration and login. We may also request you to provide your birthday information to determine whether you are an adult user. After completing the registration, you can add your profile picture, nickname, gender, account name, and other basic information to get a better experience with your HUAWEI ID. You can also use a registered email address to log in to your HUAWEI ID. During the process of managing your profile picture, you can select Create with AI to generate one. We will use the AI capabilities of Celia Photo Studio to create your profile picture. When you set your profile picture, we will also launch Contacts for you to set who can see the profile picture, helping you better protect your privacy. In addition, when you create your profile picture using Gallery, we will use the best-performing AI algorithms in the system to provide a better profile picture display.
+
+During the registration or login process, we will also collect your device identifiers (including SN and ODID), device information (including device model and device name), HUAWEI ID information, WLAN information (Wi-Fi name), carrier information (including IMSI and PLMN), basic system settings (country code, language, registration location, and service location), operating system information, basic app information, approximate location information (including SSID and BSSID), and browser settings (if applicable), in order to identify your frequently used trusted devices for security purposes and enable you to easily log in on your frequently used devices or trusted browsers. To help you quickly and securely log in or register an account, we will read your SIM card mobile number. In addition, when you use an SMS verification code to log in, we will receive the SMS message to automatically fill in the SMS verification code for you. When changing your profile picture, you can select an image or video from the image picker to make the change. When you use the code scanning feature, we will use the code picker to identify the QR code. During your use of the security verification feature, it is necessary to display the verification code on the device where you have logged in to your HUAWEI ID, so that you can use the security verification code to log in to your HUAWEI ID on the new device. This feature is supported on phones, tablets, and computers, and needs to use the service message feature and collect your HUAWEI ID information, device identifiers (including SN and ODID), device information (device model and device name), and system user name.
+
+In addition, during the login process, you can use the facial or fingerprint information enrolled on your device instead of your account password to complete the process. Such information will only be stored in the secure trusted zone on your device. We will not collect any biometric information enrolled on your device but will only collect your face ID or fingerprint ID.
+
+Account security
+
+To protect the information in your HUAWEI ID , we have set up a variety of identity authentication methods, which include adding information to your HUAWEI ID, setting a security mobile number or security email address, adding emergency contacts, and completing real-name authentication. During your use of the aforementioned features , you will need to provide your security mobile number, security email address, or valid identity documents as applicable. You can grant the Contacts permission when adding emergency contacts , so that you can quickly sync contacts from your Contacts app to the emergency contacts list. On devices running HarmonyOS 6.0 or later, we will no longer use the Contacts permission. You can use the contact picker to quickly select a contact to sync to the emergency contacts list. It is recommended that you use a screen lock on your device to enhance your account security. In addition, we will use CAPTCHA (Completely Automated Public Turing test to tell Computers and Humans Apart) to assist in identifying machine-simulated actions, thereby securing the account login or usage environment.
+
+For the purpose of securing your account when you request to recover your account password, modify your HUAWEI ID registration information, or freeze or unfreeze your account , we may need you to provide your HUAWEI ID information, device identifiers (including SN), WLAN information (Wi-Fi name), approximate location information (including SSID and BSSID), and previous usage information (such as information about previous purchases on VMALL ), and will, when necessary, ask you to upload your selfies with identity documents (ID card, passport, Exit/Entry Permit for Traveling to and from Hong Kong and Macao, or Mainland Travel Permit for Taiwan Residents) or facial images to verify your identity. You can use the file picker to quickly upload your files during the account recovery request process.
+
+Account risk control
+
+For the purpose of protecting the rights of Huawei, you, or other Huawei customers, in situations like sign-ups, logins, and payments, we will collect and use your device identifiers (including SN), device type information, approximate location information, network information (IP address), carrier information (including IMSI), HUAWEI ID information (profile picture and nickname), personalized device settings, and system settings for risk control to prevent violations of public policy and restrict fraud and other illegal activities. We will freeze or even clear accounts that are identified as abnormal.
+
+If we find that the mobile number used by you to log in to your account is likely to be recycled by the communications carrier, we will provide the number and the time of your account registration with the number to the carrier to check whether the number is recycled and thereby ensure your account security.
+
+If there are abnormalities with your HUAWEI ID when you are using it to log in to a third-party service, we will send information about the abnormalities (such as the account being frozen or compromised) to the third-party service to support its risk control.
+
+Real-name authentication
+
+Before allowing you to use Huawei services that involve payment, gaming, content, e-commerce, and developer community features, we need your cooperation in real-name authentication to comply with national laws and regulations as well as regulatory requirements. When you perform real-name authentication as described below, we need to collect information such as HUAWEI ID information to complete the real-name authentication.
+
+If you use an ID card or eID for the real-name authentication , we will transmit the valid ID card information you provide, in encrypted form, to an authoritative identity authentication organization to have your real identity verified. If we need to further verify the validity of the information you provide , we may also request you to provide photos or videos of your face , which will not be stored by us. We will use the Camera permission on your device when you use the real-name authentication feature described above.
+
+If you use a bank card for the real-name authentication , we will transmit the bank card information, name, and ID card number you provide in encrypted form to UnionPay for verification.
+
+We will store the valid ID card information you provide in encrypted form, in order to (a) help authenticate you upon events such as when you request to recover your account password or submit other appeals concerning your account ; and (b) verify your identity when you use our user authentication feature based on real-name information verification or facial recognition , by checking whether the identity information you submit to the third party is consistent with your HUAWEI ID real-name information. After you complete the real-name authentication , we may verify and update the date of birth you submitted when creating your HUAWEI ID, so that we can provide you with appropriate services.
+
+Address management
+
+We use your shipping addresses in VMALL to provide you with unified address management services, which save the need for you to manually enter the addresses in different apps or services. You can go to Settings > HUAWEI ID > Personal info > My addresses to manage all your address information (contact name, phone number, and address information) there. Your address updates will be synced to VMALL. You can withdraw your consent by touching the info icon in the upper right corner of the My addresses screen and selecting Withdraw consent from the information displayed. To make it easier for you to enter address information when managing your addresses, we will collect your HUAWEI ID information. You can also quickly add contact names and phone numbers by using the contacts picker, quickly add address information by using the map picker, or quickly paste content by using the clipboard picker.
+
+If you need to obtain address information when using an app or service, you can grant the address information to the app or service.
+
+How you can manage your address information differs on different devices or in different versions because the services provided there are different.
+
+Device interconnectivity
+
+To help you easily and securely use the distributed interconnection capability, when you have started up your device, log in to your HUAWEI ID, enable Internet access, or use the device interconnection capability, we may secondarily launch the Device Interconnection service in the background to collect your HUAWEI ID information and device identifiers and store them to the Huawei server over the Internet. During your use of the distributed interconnection capability, we will exchange your HUAWEI ID information and device identifiers between the devices for connection establishment.
+
+1.1.2 Family Sharing
+
+Family member management
+
+Family Sharing allows you to seamlessly share your selected content with your family members. When you enable Family Sharing, we will use your family member information and account information to help you and your family members share benefits, subscriptions, and more. You can manage your family members in Family Sharing. For example, you can add family members to Family Sharing by entering a registered HUAWEI ID (mobile number or email address), or create a child account in Family Sharing. To display family member information and send notifications to family members during your use of Family Sharing, we will collect information such as the mobile number, email address, HUAWEI ID information (profile picture and nickname), age information, device identifiers (including ODID), network type, device type, network information, and approximate location information (SSID and BSSID). In addition, after you log in to your account, we will collect the device identifiers (including ODID) to facilitate your receipt of invitation notifications.
+
+Benefit sharing
+
+Benefits of purchased Cloud storage plans can be shared among family members. Data of all members will be securely stored on Cloud. Each family member's stored data is visible only to themselves.
+
+Mobile Guardian
+
+In Family Sharing, the organizer can enable Mobile Guardian to guide their child to properly use Huawei devices and services. With the feature enabled, the organizer and administrators can manage the Away time, Screen time, App and service limits, and Content access restrictions for the child's device. If the organizer has enabled Mobile Guardian for the child or teenager, Mobile Guardian will be automatically enabled on the device where the child or teenager logs in to their account.
+
+1.1.3 Cloud
+
+Cloud provides you with secure and reliable digital asset management services. Cloud will be automatically enabled if you log in to your HUAWEI ID on devices (including but not limited to phones, tablets, and PCs) that provide the Cloud services. Such services allow you to store photos, videos, contacts, notes, calendar events, app data, and so on on the cloud.
+
+Cloud adopts industry-leading privacy protection technologies and security protection mechanisms based on multi-layer encryption to ensure that no one else can view or obtain your information without your authorization. For more information about Cloud security and privacy, see Cloud Security and Privacy (https://cloud.huawei.com/security).
+
+Cloud Backup
+
+Cloud Backup will automatically back up your data when your device is locked and connected to a WLAN network. Cloud Backup is only available on phones and tablets. During your use of the Cloud Backup feature, we will collect the following information to help you restore data on other Huawei devices at any time and improve your experience when switching to a new device: device identifier, WLAN information (Wi-Fi status, Wi-Fi parameters, and Wi-Fi list), BSSID, SSID, images, Notepad, list of installed apps, app settings, files, calendar events, local voice recordings, browser data, SMS messages, Notes, system settings, contacts list, Bluetooth device list, videos, call records, call blocklist, music, GoPaint (created content), and device status information. We will launch AppGallery when you restore apps, in order to help you restore apps to their latest versions in AppGallery.
+
+If no data has been backed up from your Huawei device to Cloud for more than one hundred and eighty (180) days, we may clear the information already backed up from the device to protect the legitimate rights and interests of all Cloud Backup users and assure their experience.
+
+Cloud Backup does not provide the backup services on your PC. None of your personal information will be collected or used for features you do not use.
+
+Apps using the cloud
+
+You can enable an app under Apps using the cloud to store its data on the cloud in real time and keep the data synced across devices logged in to the same account. During your use of the aforementioned feature , we will collect the following information to store the data on Cloud in real time, keep the data synced across devices logged in to the same account , help you restore data on other Huawei devices at any time, and improve your experience when switching to a new device: precise location information , WLAN information (Wi-Fi status, Wi-Fi parameters, and Wi-Fi list), Password Vault (including automatically saved or manually entered data, card document data, and Wi-Fi data), SmartFill (historical form input and user settings), BSSID, SSID, images, Notepad, list of installed apps, app settings, calendar events, browser data, Notes, Focus, contacts list, data of apps using the cloud syncing services such as Video. To ensure faster and more stable collaboration between your devices, we will collect the following information when you use the Multi-Device Collaboration services: your device name (text you actively upload), device identifier, and Bluetooth MAC address. Such information is only used for collaboration between your devices.
+
+Data in Password Vault is protected with end-to-end encryption, and the data encryption key is stored on your trusted device, making it impossible for others, including Huawei, to access the data.
+
+Drive
+
+Drive allows you to upload and download files, and more. During your use of the aforementioned features, we will collect the Drive files, app usage information, and device status information to allow you to search for your Drive files using the global search service on your device.
+
+Cloud storage management
+
+Cloud provides you with Cloud storage management services. For this purpose, we need to access the Internet. When you enable Cloud to view and manage your Cloud storage data and enable or disable features, we will collect your following information so that you can view and manage your Cloud storage at any time and we can improve our service quality: network information, system settings, system properties, nickname, profile picture, basic app information, and app settings.
+
+Marketing notifications
+
+Cloud provides you with marketing notification services. If you turn on the Promotional notifications switch, we will collect your HUAWEI ID information, app usage information, operating system, and device identifier.
+
+Cloud website
+
+You can log in to the Cloud website (cloud.huawei.com) to view and manage your data. For this purpose, we will collect the basic app information, app settings, app usage information, system settings, and IP address or IP location. In Settings of the Cloud website, you can disable or delete your cards linked in HUAWEI Wallet. When you use this feature, HUAWEI Wallet will send the card information to Cloud. However, we will not store such information on the cloud. If you are a paying user of Cloud, you can also go to Settings > Advanced > Contacts Time Machine to restore your contacts information within the last 30 days.
+
+Plan purchases
+
+We offer paid membership services to provide you with more and better services and improve your experience. You can purchase a cloud storage plan that fits your needs. You can also get a Cloud membership through benefit redemption. If you purchase a plan, we will collect the transaction record and benefit information to ensure that you can enjoy the benefits you have paid for.
+
+1.1.4 Find Service
+
+During your use of Find Service for locating your device , we will collect the following information to show you the mobile number and network information of the lost device and increase your chances of getting the device back : SN, device status information, WLAN information (Wi-Fi parameters), WLAN information (Wi-Fi status), SSID, network information, basic app information, carrier information, device identifier, SIM card number, approximate location information, and precise location information. For supported devices, Find Service is available even if the devices have been powered off or restored to factory settings. Features provided by the services or the data processing may vary depending on the device or version. Features you haven't used will not collect your personal information. The services are available to you on phones, tablets, and PCs.
+
+Finding auxiliary devices
+
+If you have logged in to your HUAWEI ID on your device, enabled Find Service, and completed security verification, Find Service will be automatically enabled for the accessories paired with the device to ensure your device security.
+
+During your use of Find Service, we will collect the device identifier, SN, device status information, and device model. You can go to the Find Device app and select Remove device to disable Find Service for the auxiliary device.
+
+To display the last location of the Bluetooth device before it is disconnected, the Location permission will be used upon the disconnection to automatically report the location of your device.
+
+For sports watches and bands, you can only find and manage these devices through the Health app after pairing with these devices in the app.
+
+The feature for finding auxiliary devices is available only on mobile phones and tablets.
+
+Finding items
+
+To discover and manage a HUAWEI Tag paired with your device , we will collect the device identifier, Bluetooth device list , system properties, device model, device hardware information, and device status information after the item is successfully paired with your device. In the event that your HUAWEI Tag is off from the linked device, we need to disclose your information limited to the item's device identifier to ensure device security and personal safety. In addition, you can use Find Network to check the item's location (as described below).
+
+The feature for finding items is available only on mobile phones and tablets.
+
+Find Network
+
+Find Network is a short-range information network consisting of a large number of Huawei devices. After a device or item joins Find Network, you can locate it through Find Network or anonymously help locate other devices and items that have joined Find Network.
+
+Find Network detects lost devices and items nearby using the device discovery and connection capabilities, anonymizes the detected precise location information, and encrypts and uploads the information to the Huawei server. (Such precise location information will be collected only when a nearby lost device or item is detected, and the collection will take place at a minimum interval of 5 minutes.) Huawei cannot decrypt the location, and will not share the encrypted data of the location with any third party.
+
+During your use of the finding feature for an item or device, your following information will be collected to provide you with the ability to locate your device when it is offline or powered off : HUAWEI ID information, device identifier, device hardware information, device model, device status information, MAC address, BSSID, network information, carrier information, SIM card number, and precise location information.
+
+If your device supports NFC, Find Network will identify information about an item via NFC when the item is in Pairing or Lost mode.
+
+The Find Network services are available to you on phones, tablets, and PCs.
+
+Cloud website
+
+You can log in to the Cloud website (cloud.huawei.com) to view your device's location. We will collect your IP address or IP location, basic app information, system settings, app settings, and app usage information to allow you to log in to the Cloud website (cloud.huawei.com) to view and manage your devices.
+
+1.1.5 Device management
+
+To make it easier for you to view your device information, we will sync the list of devices under your account from apps such as AI Life. You can view the list by going to Settings > HUAWEI ID > My devices. To display information about devices linked with your account, we will collect information such as the HUAWEI ID information, device identifiers (including SN), personalized device settings, Bluetooth MAC address, device status and running records, and device information (device model and device name) when you log in to your HUAWEI ID. You can manage the nickname of the current device by going to Settings > About , or Settings > NearLink & Bluetooth , or Settings > Mobile network > Personal hotspot. In addition, for easier management of devices under your control, you can further manage your devices through the device cards or by touching More devices to access AI Life.
+
+How you can manage your device information differs on different devices or in different versions because the services provided there are different.
+
+1.1.6 In-App Purchases
+
+Huawei In-App Purchases comprises services that help you purchase products in apps. For more information about the privacy statement about Huawei In-App Purchases, please refer to Statement About Huawei In-App Purchases and Privacy (https://legal.cloud.huawei.com.cn/terms/scope/huawei/iap-hmos/privacy-statement.htm?code=cn&language=en_us). Please understand that the data type of the Huawei In-App Purchases services may change due to reasons such as version updates or policy adjustments. For details, please refer to Statement About Huawei In-App Purchases and Privacy.
+
+Purchases via Huawei In-App Purchases
+
+If you use Huawei In-App Purchases to purchase offerings, we will collect the following information to help you complete the purchase, display your purchase records to you, and determine whether parental authorization is required for payment based on your age : basic account information, HUAWEI ID information, network information, benefit information, device hardware information, age, device identifier, app settings, system settings, subscription information, transaction records, basic app information, and account payment credential.
+
+Payment verification method management
+
+To ensure the security of your funds, payment can only be processed after your verification. This requires you to set the payment password and security question and answer. If you forget your payment password, you can retrieve it using your contact information (phone number or email address) and security question. You can also choose to perform verification using your fingerprint or face. To facilitate payment completion, we will collect the account payment credential , device identifier, face ID, fingerprint ID, HUAWEI ID information, and security questions and answers to help you quickly complete the payment verification during subsequent purchases.
+
+Your fingerprint or facial information will only be stored in the security zone of your device. We will not access your original fingerprint or facial information. If you have enabled Huawei Pay, your device identifier and HUAWEI ID information will be stored in Petalpay (Shenzhen) Co., Ltd. to ensure payment security.
+
+HUAWEI Points top-up, claiming, and usage
+
+HUAWEI Points can only be used for purchasing digital offerings provided by Huawei Mobile Services, and can be used for purchases in Huawei apps such as Cloud, Video, Music, Themes, Books, GameCenter, and AppGallery. HUAWEI Points cannot be used to purchase phones, tablets, watches, Visions, and other physical offerings. You can top up your HUAWEI Points by entering your HUAWEI Gift card password or by purchasing them directly. When you top up and use your HUAWEI Points, we will collect the transaction records, customer service messages, redemption code, and virtual assets to show you the top-up and usage details and provide you with the benefits.
+
+You can top up your HUAWEI Points and view your HUAWEI Points balance and usage records by going to Settings > HUAWEI ID > Payment and purchases > HUAWEI Points. We will send customer service messages to notify you about expiration of your HUAWEI Points balance.
+
+Coupon claiming and usage
+
+You can obtain coupons through promotion activities of Huawei or third-party apps that cooperate with Huawei. You can only use coupons for discounts when you purchase the digital offerings and value-added services provided by Huawei Mobile Services. When you claim coupons through promotion activities of Huawei or third-party apps that cooperate with Huawei, we will collect the benefit information and redemption code to record the activities you participate in and provide you with the benefits.
+
+You can go to Settings > HUAWEI ID > Payment and purchases > Coupons to view the related information. Your coupons will be linked with your HUAWEI ID.
+
+Invoice management
+
+To help you easily manage invoice headers and request invoices from your purchase record details, we will collect your email address, transaction records, corporate contact information, and name, which will be used to allow you to quickly select invoice header information during subsequent invoice requests and help you complete your invoice requests based on tax requirements.
+
+Refund
+
+If you request a refund, we will collect the following information, in order to verify your identity and check whether you meet the refund eligibility criteria and refund request policies : supporting materials, records of communication with the customer service, basic account information, HUAWEI ID information, name, contact number, bill information, disability certificate , medical certificate confirming the diagnosis of critical illness , certificate of entitlement to subsistence allowance , identification materials , photos of the medical certificate of birth , household register photos , and ID card photos.
+
+The supporting materials required for a refund request may vary depending on the circumstances. Some app developers may require you to provide additional supporting materials for you to be entitled to more preferential treatment under the refund policy. For details, please refer to the information provided by the developer to you. We will send the above supporting materials and your HUAWEI ID information to the developer for verification. The information will be stored for up to two (2) years or deleted after you delete your HUAWEI ID.
+
+Risk control
+
+To protect the rights of Huawei, you, and other Huawei users, we will collect your basic account information, device model, device hardware information, app settings, device identifier, age, IP address, basic app information, HUAWEI ID information, operating system, and transaction records to conduct risk control, prevent fraud and other illegal activities, and reduce credit risks.
+
+1.1.7 Account-related global services
+
+Account suggestions
+
+When providing you with HUAWEI ID app suggestions, we will collect the following information to provide suggestions for you to improve your app settings to obtain better app experiences and security assurance: HUAWEI ID information, device identifier (ODID), basic app information, system settings, device model, device hardware information, operating system, system properties, and IP address. For example, you may be notified to get a free trial of Cloud+ services or to promptly take care of your Cloud data that will be deleted soon. These suggestions will disappear after you have processed them, to ensure a better service experience.
+
+1.1.8 Account contact picker service
+
+We will provide the service for selecting contacts who have HUAWEI IDs based on the linking between your local contacts and HUAWEI ID information. During your use of this feature, we will collect the contact numbers of your contacts and the HUAWEI ID information of your contacts who have HUAWEI IDs, in order to allow you to use the account contact picker service. Your contacts information will only be used to link each contact with information about whether it has a HUAWEI ID. We will not store your contacts information. You can go to Huawei Privacy Center and turning off the switch for allowing your HUAWEI ID to be found by your mobile number. After the switch is turned off, your contacts will not be able to find your HUAWEI ID via your mobile number.
+
+1.1.9 Privacy center
+
+The Privacy center allows you to manage your personal information in one place. You can access the Privacy center to exercise your rights as the data subject.
+
+Managing your personal preferences
+
+We will use your HUAWEI ID information, basic account information, app settings, device identifier, basic app information, and device model to show you your personal preferences. You can modify your personal preferences at any time. We will match content that you may be more interested in for you based on your preference settings.
+
+Messages from Huawei
+
+Huawei may send you the latest information such as product news and promotional campaigns through your email address, SMS, MMS, or notifications. You can enable or disable such messages from Huawei at any time. For this purpose, we may use your HUAWEI ID information, app settings, and basic app information.
+
+Obtaining your data copy
+
+If you request and download a copy of your personal data, we will strictly verify your identity information to ensure your personal information security. For this purpose, we may need to verify your HUAWEI ID information, basic account information, basic app information, email address, and contact number. For children, we will verify information about their parents.
+
+To ensure the security of your personal data, when you request to obtain your data copies, we will use your app usage information and display your data copy requests to provide transparency for your personal data copy requests and downloads.
+
+You need to set a password for the data copy package you are requesting to ensure your data security. Such password is known only to you. Your system settings information and device hardware information may be used to adapt the display effects for different languages and devices.
+
+Clearing historical preferences
+
+If you request to clear your historical preferences, we will strictly verify your identity information to ensure your personal information security. For this purpose, we may need to verify your HUAWEI ID information, basic account information, email address, contact number, and basic app information. For children, we will verify information about their parents.
+
+1.1.10 Feedback
+
+The Feedback feature allows you to submit your questions and suggestions regarding your use of the services.
+
+When you use the Feedback feature, we will collect your contact number, records of communication with the customer service, network information, images you actively upload, videos you actively upload, system properties, basic app information, ODID, email address, app logs, HUAWEI ID information, device identifier, device model, device hardware information, and system settings. The purpose of collecting such information is to analyze the collected information, improve the app and services, and provide you with a better user experience. If you select the option to share app logs for more accurate issue diagnosis, your operation records will be included in the app logs, and will be used only for issue locating purposes.
+
+1.1.11 Help
+
+The Help feature provides you with solutions to common issues. When you use this feature, we may collect the following information to provide you with relevant answers based on the issue you have encountered: your transaction records, basic app information, records of communication with the customer service, HUAWEI ID information, nickname, images you actively upload, videos you actively upload, device model, device hardware information, system properties, operating system, system settings, app usage information, and other information you provide for substantiating relevant facts.
+
+1.1.12 Product O&M
+
+To ensure smooth operation of the product, ensure cyber security as required by laws and regulations, fulfill statistics and settlement purposes, and improve operational strategies of the product, we will collect your following information when you use the aforementioned features: HUAWEI ID information, device identifiers (including ODID), operating system, system settings, approximate location information (including SSID and BSSID), system properties, device model, profile picture, nickname, app usage information, basic app information, app settings, device hardware information, network information (including IP address), carrier information, records of views and use in this app, content you post, and app error information.
+
+If you do not provide the preceding information, your use of related features in this app may be affected.
+
+1.2 To provide you with more valuable and tailored services, we will provide you with the features and services described below and process related information with your consent. You can disable or enable a service or feature concerned based on the management path described in the section for the service or feature.
+
+1.2.1 Login to third-party services
+
+You can use your HUAWEI ID to log in to a third-party service, and the third-party service provider will obtain the HUAWEI ID information your grant (profile picture and nickname) after obtaining your consent. In addition, some third-party services have integrated the quick login capability of HUAWEI ID. When you access such services, the third parties can only link your HUAWEI ID for login authentication. We will not share any of your other personal information with the third-party services.
+
+In addition, if a third-party service has integrated the feature for instant login with HUAWEI ID, you can easily log in to the third-party service and authorize the third-party service to access your mobile number.
+
+When a third-party app requests to use your additional personal information (which may include your phone number, email address, ID card information , or address information), your separate consent will be requested again. Such information will be shared with the third-party app only with your consent.
+
+1.2.2 Find Service
+
+When you enable and use Find Service, we will collect precise location information to show you the device location and increase your chances of getting the device back.
+
+If you do not want to receive the aforementioned content or services, you can withdraw your consent by going to Settings > Privacy & security > Location > System services > Find My Device.
+
+Your device's last location will be sent to the server when the device's battery is about to run out or when the device gets separated from an accessory.
+
+If you do not want to receive the aforementioned content or services, you can withdraw your consent by going to Settings > HUAWEI ID > Find Device > Send last location.
+
+If you use the Precise search services, we may turn on the NearLink switch of the device you are looking for to display the distance and direction during the search process.
+
+If you do not want to receive the aforementioned content or services, you can exit Precise search to withdraw your consent.
+
+Features provided by the services or the data processing may vary depending on the device or version. Features you haven't used will not collect your personal information. The services are available to you on phones, tablets, and PCs.
+
+Lost mode
+
+Lost mode allows you to lock your lost device. In this mode, the Location permission will be used to automatically report the location information every ten minutes. We will collect the travel track to help you track the location of your lost device, and collect the device's travel track in order to display it on the map after obtaining your consent. We will encrypt the track information and only save the records generated over the last 24 hours. You can also set lock screen information (text you actively upload) and contact number or email address for your device in Lost mode, so that anyone who finds the device can then contact you. Such uploaded travel track , lock screen information, and contact number or email address will all be automatically cleared when you disable Lost mode.
+
+If you do not want to receive the aforementioned content or services, you can withdraw your consent by opening the Find Device app, going to Device details > Lost mode , and disabling Lost mode.
+
+The Lost mode settings are available on phones, tablets, and PCs.
+
+Location sharing
+
+You can use the Location sharing feature to share the location of this device with a family member or friend of yours, and we will collect the precise location information and profile picture, so that they can help you locate this device in case it is lost or view your current location. After Location sharing is enabled, your device will use the Location permission to report its location only when the family member or friend you share with requests the location. Your family member or friend can access this location information within 24 hours, and we will delete this location information after this period of time.
+
+If you do not want to receive the aforementioned content or services, you can disable the Location sharing service at any time by going to Settings > HUAWEI ID > Find Device > Location sharing.
+
+The Location sharing feature is available on phones, tablets, and PCs.
+
+Separation alerts
+
+Find Service provides you with the separation alert feature. After you enable this feature, we will use the device discovery and connection capabilities to continuously check whether your item has been left behind. Once your item has been separated from its linked device for a certain period of time, we will send a separation notification for you, including the precise location information of the device at the last moment before it gets separated.
+
+In the event that you select Do not notify me here for a location, we will set the location as grid data to provide you with intelligent alert services. If you want to continue to have separation alerts triggered for a location set as an exception for alerts, you can remove the location on the separation alert screen.
+
+If you do not want to receive the aforementioned content or services, you can disable the Separation alerts service at any time by opening the Find Device app and going to Device details > Separation alerts.
+
+The separation alert feature is available on phones, tablets, and PCs.
+
+1.2.3 Advertising and marketing
+
+With your consent, we will provide you with advertising and marketing services. For details about advertising and marketing, please refer to the "Advertising and Marketing" section.
+
+2 Required Permissions
+
+The following permissions are required during the running of the app. Any permissions that are not explicitly granted will not be used.
+
+Contacts: This permission is required for you to specify an emergency contact by selecting the contact from the Contacts app. On devices running HarmonyOS 6.0 or later, we will no longer use the Contacts permission for selecting emergency contacts. In addition, you can grant this permission for linking your contacts in the Contacts app that have HUAWEI IDs, so that you can use the account contact picker service.
+
+Camera: This permission is used to perform real-name authentication for you account. You can choose to grant or revoke this permission.
+
+Location: The permission is required to obtain the location information, which is used to allow you to view your current location or to provide you with information and services relevant to your location. You can also choose to revoke this permission. In addition, this permission is required for you to use Find Service.
+
+Images & videos: The permission is required by Cloud to read Gallery data and display the number of synced images and videos.
+
+Device connection: We may use this permission to provide you with the device discovery and location capabilities when you use Find Service.
+
+You can manage the permissions requested for your HUAWEI ID and its underlying services at any time by going to system Settings > Privacy & security. Because the services and system permissions vary depending on the device or version, the system permissions that we request may be different accordingly. In addition, how you can manage the permissions may vary.
+
+3 Advertising and Marketing
+
+We will push service notifications, activities, and promotions to you based on your HUAWEI ID information, device identifier, operating system, and app usage information. If you want to unsubscribe from such marketing messages, you can go to Settings > HUAWEI ID > Cloud > More settings > Notifications to stop receiving the messages.
+
+4 Protection of Minors
+
+We attach great importance to the protection of minors' personal information. Huawei provides services and protects minors in strict accordance with national laws and regulations. If you are a minor, your parents or legal guardians must agree to your use of this app, and agree to the applicable terms and conditions. Parents or legal guardians should also take appropriate precautions to protect minors, including monitoring their use of this app.
+
+In particular, if you are a child (a minor under the age of 14), please make sure to notify your parents or legal guardians about carefully reading with you this Statement and the Huawei Consumer Business Statement About Children's Privacy Protection (https://legal.cloud.huawei.com/legal/child/privacy-statement.htm?code=CN&language=en-US) specifically formulated by us before you use our services, and use our services or provide information to us with the consent and guidance of your parents or legal guardians. If you are a parent or legal guardian, please ensure that the child under your guardianship uses our services and provides us with information with your consent or guidance.
+
+You can add a minor's account to Family Sharing or create an account for a minor in Family Sharing, to easily manage the minor's account.
+
+To help you manage your child's access to certain types of content or resources, we will enable the mode for protecting minors when you enable Digital Balance and select Enable for a child. You can go to Settings > Digital Balance to change the content access restrictions. We will limit the screen time and content access for protection purpose based on your settings. When you enable the Youth mode feature for your child , we will collect your child's profile picture, nickname, and age group , and provide the age group information to the app, so that the app can provide age-appropriate content to effectively guide minors to use electronic devices healthily and care for their healthy growth. The data generated in this scenario will be linked to the HUAWEI ID you are currently logged in to.
+
+In the interest of protecting children, child users are only permitted to use a child account. Parents or legal guardians must ensure that their child is using a child account. After you create a child account for your child (under the age of 14), you can view and approve their requests for purchases (including in-app purchases and downloads). In the event that any child account linked with your account requests to link a bank card or make a payment, we will send you an authorization request. Only after you grant the authorization will the child account be able to link the bank card or make the payment as intended.
+
+As required by applicable laws and regulations in China, we will set a payment limit for child accounts that have passed real-name authentication in order to protect minors.
+
+The services provided may vary between different devices or versions, and may change based on updates of features available on your device.
+
+5 Sharing with Third Parties
+
+Some of our services are provided by third parties. To provide you with such services, we need to share your account information with the third parties. The third parties also provide security protection measures. The shared data is transmitted securely in encrypted form, and your data will not be shared without your consent. In order to protect the security and privacy of your data, we have signed data security protection agreements with our partners, which clarify our partners' responsibilities, obligations, and requirements when it comes to protecting your data. For details, please refer to the Details About Information Sharing with Third Parties (https://legal.cloud.huawei.com/terms/scope/huawei/id/list-privacy-statement.htm?&code=CN&language=en-US).
+
+6 Third-Party SDKs
+
+To provide you with certain services, such as third-party payment services (Alipay and China UnionPay), we require joint efforts with the partners. Therefore, we have integrated software development kits (hereinafter referred to as "SDKs") or other similar programs of our partners. For details, please refer to the Third-Party SDK List (https://legal.cloud.huawei.com/terms/scope/huawei/id-hmos/privacy-statement.htm?code=CN&language=en-US&contenttag=3rdsdk).
+
+7 Managing Your Personal Information
+
+Huawei highly respects your concerns regarding personal information, and you are provided with the following data subject rights and options. If you have used the In-App Purchases services, you can refer to the privacy statement for the In-App Purchases services to learn how to manage your personal information.
+
+7.1 Access your information
+
+During your use of HUAWEI ID, you can access your HUAWEI ID, profile picture, nickname, and other personal information by going to Settings > HUAWEI ID.
+
+You can log in to Huawei Privacy Center (https://privacy.consumer.huawei.com/tool?lang=en-us) using your HUAWEI ID to obtain a copy of your data. To ensure your data security, we need to verify your identity when you request a copy of your data.
+
+If you use Cloud, you can access your Cloud data by going to Settings > HUAWEI ID > Cloud or logging in to the Cloud website (cloud.huawei.com).
+
+If you use Find Service, you can access your Find Service data by going to Settings > HUAWEI ID > Find Device or logging in to the Cloud website (cloud.huawei.com).
+
+How you can manage your information differs on different devices or in different versions because the services provided there are different.
+
+7.2 Rectify your information
+
+You can access and modify your profile picture, nickname, and other personal information by going to Settings > HUAWEI ID.
+
+You can manage the name of the current device by going to Settings > About , or Settings > NearLink & Bluetooth , or Settings > Mobile network > Personal hotspot.
+
+You can enable or disable advanced protection for your account by going to Settings > HUAWEI ID > Account security > Advanced account protection.
+
+You can enable or disable enhanced verification for instant login with your account by going to Settings > HUAWEI ID > Account security > Instant login verification.
+
+How you can manage your information differs on different devices or in different versions because the services provided there are different.
+
+7.3 Delete your information
+
+You can erase your real-name authentication information by going to Settings > HUAWEI ID > Personal info > Real-name authentication.
+
+You can erase your address information by going to Settings > HUAWEI ID > Personal info > My addresses.
+
+You can erase the account security information you have added, such as emergency contacts and security mobile number, by going to Settings > HUAWEI ID > Account security.
+
+You can view or delete your Cloud data by going to Settings > HUAWEI ID > Cloud or logging in to the Cloud website (cloud.huawei.com).
+
+If you use Find Service, you can view or delete your Find Service data by going to Settings > HUAWEI ID > Find Device or logging in to the Cloud website (cloud.huawei.com).
+
+How you can manage your information differs on different devices or in different versions because the services provided there are different.
+
+7.4 Withdraw your consent
+
+You can control access to your account and the receiving of subscription notifications by logging in to Huawei Privacy Center (https://privacy.consumer.huawei.com/tool?lang=en-us) using your HUAWEI ID in a browser on your computer or mobile device and then clicking or touching Control account access.
+
+You can also control access to your account by going to Settings > HUAWEI ID > Account security > Apps using my HUAWEI ID.
+
+You can withdraw your consent for address information by going to Settings > HUAWEI ID > Personal info > My addresses , touching the info icon in the upper right corner of the My addresses screen, and selecting Withdraw consent from the information displayed.
+
+You can control whether to have your data uploaded to Cloud by going to Settings > HUAWEI ID > Cloud and turning on or off the switches for the features or data elements concerned.
+
+You can disable Find Service at any time by going to Settings > HUAWEI ID > Find Device and disabling Find My Phone / Find My Tablet.
+
+How you can manage your information differs on different devices or in different versions because the services provided there are different.
+
+7.5 Disable service
+
+You can go to Settings > HUAWEI ID > Account security > Security center to delete your account. If you delete your HUAWEI ID, your personal information in all the linked Huawei apps you use will be permanently deleted and cannot be restored. Exercise caution when performing this operation.
+
+How you can manage your information differs on different devices or in different versions because the services provided there are different.
+
+If you have any further requests, questions, comments, or suggestions regarding your rights as a data subject, please contact us using the contact information provided under the "Contacting Us" ( #EN-US_TOPIC_0000002364447914 ) section of this Statement.
+
+8 Information Storage Location and Retention Period
+
+8.1 Storage location
+
+The aforementioned will be sent to and stored on servers in the People's Republic of China (Beijing Municipality and Guiyang City of Guizhou Province).
+
+We will transfer your personal information outside the borders only with your consent or on other lawful bases for processing.
+
+(1) Due to the need for worldwide account login, when you log in to your HUAWEI ID (registered for China) in a different location, the Huawei affiliate responsible for operations in the different location will forward your account information (HUAWEI ID information, mobile number, and email address) outside the borders to the account server in China for authentication. In this case, no servers outside the borders will retain your account information.
+
+(2) To ensure that you can continue to log in to the current HUAWEI ID and use Huawei apps with it after switching to a service location outside the borders, we will provide your account information (HUAWEI ID information, mobile number, and email address) to the Huawei affiliate responsible for service operations in that service region after you agree to switch to that service location. Depending on the foreign country or region you select, the aforementioned information will be processed on the servers deployed in the EU, Singapore, or Russia by relevant Huawei affiliates.
+
+We will take necessary technical and administrative measures in accordance with laws, regulations, and regulatory requirements to ensure that the recipients outside the borders have sufficient data security capabilities to protect your personal information. If you want to further learn about how Huawei affiliates process your data or to exercise your rights in relation thereto, you can visit the Privacy Questions (https://consumer.huawei.com/en/legal/privacy-questions/) page to contact Huawei.
+
+8.2 Retention period
+
+We will retain your personal information for the period necessary to fulfill the purposes described in this Statement, and delete or anonymize your personal information beyond the time set out below, except as otherwise required by applicable laws and regulations.
+
+After you delete your HUAWEI ID, we will delete all personal information linked with your account, including basic personal information, app usage information, and your backup content. The specific retention time of your personal information is set out below:
+
+Cloud
+
+Data copies for you to restore contacts data using the Time Machine feature of the Cloud website will be retained for up to thirty (30) days, or will be immediately deleted after you delete your account.
+
+Your order information related to your Cloud storage plan purchases will be retained for seven (7) years.
+
+Data collected from you when you use the marketing notifications feature will be retained for up to fourteen (14) days, or will be immediately deleted after your HUAWEI ID is deleted.
+
+Find Service
+
+Your device's location information obtained by Find Service will be retained for up to one hundred and eighty (180) days and will be immediately deleted when you turn off the Find My Phone / Find My Tablet switch. A lost device's mobile number, network status information, and remaining battery level displayed in Find Device will be retained for up to one hundred and eighty (180) days. If you request to unlock the device when you forgot the password, the device verification code delivered to your device will be deleted immediately after you disable the Find Device feature.
+
+Offline location information obtained by Find Network will be retained for up to one hundred and eighty (180) days, or will be deleted immediately after your account is deleted or after you disable the Find Network feature.
+
+A device's track information, lock screen information, contact information, and screen lock will be retained for up to twenty-four (24) hours after the device gets offline. Such saved track information, lock screen information, contact information, and screen lock will all be automatically cleared when you disable Lost mode.
+
+In-App Purchases
+
+We retain personal information only for as long as necessary to fulfill the purposes for which it was collected and in accordance with legal or regulatory requirements. For details about how In-App Purchases retains your personal information, please refer to the Statement About Huawei In-App Purchases and Privacy (https://legal.cloud.huawei.com.cn/terms/scope/huawei/iap-hmos/privacy-statement.htm?code=cn&language=en_us).
+
+Information in your address management section will be retained indefinitely until you delete such information or delete your account.
+
+Data collected from you when you use the Help feature will be retained for up to two (2) years, or will be immediately deleted after your HUAWEI ID is deleted.
+
+Data collected from you when you use the Feedback feature will be retained for up to two (2) years, or will be immediately deleted after your HUAWEI ID is deleted.
+
+Information used for product O&M will be retained for up to five (5) years.
+
+Personal data processed for customer relationship management such as data subject requests, complaints, and customer interaction records will be retained for up to six (6) years from the last interaction.
+
+We will delete or anonymize your personal information beyond the time set out above, except as otherwise required by applicable laws and regulations.
+
+In the event that we discontinue our products or services, we will notify you in the form of a push notification, announcement, or by other means, and delete or anonymize your personal information within a reasonable period of time.
+
+9 Contacting Us
+
+We have appointed the person responsible for personal information protection who you can contact from here (https://consumer.huawei.com/en/legal/privacy-questions/). You may also contact us by visiting the Privacy Questions (https://consumer.huawei.com/en/legal/privacy-questions/) page. We will reply as soon as possible.
+
+If you are not satisfied with the response you receive, especially if you feel that our processing or handling of your personal information has violated or infringed on your legal rights and/or interests, you may seek external resolution, whether by filing a lawsuit with the people's court in the relevant jurisdiction, submitting a complaint to the industry self-regulation association or relevant government regulatory agencies, or by other means. You may also consult us regarding the available channels for voicing your complaint.
+
+Huawei's collection and use of your personal information is governed by our privacy policy. For more information, please refer to the Huawei Consumer Business Privacy Statement (https://legal.cloud.huawei.com/legal/privacy/statement.htm?country=CN&language=en_US).
+                        
+
+3/4:
+---------------------------------------
+Statement About HarmonyOS and Privacy
+
+Last updated: July 15, 2025
+
+HarmonyOS is a next-generation operating system for smart devices, providing a unified language for enabling intelligence, interconnection, and collaboration across different devices. It gives a neat, smooth, seamless, secure, and reliable interaction experience in all scenarios. HarmonyOS and related system services (hereinafter referred to as the "Services") are provided for you by Huawei Device Co., Ltd. (hereinafter referred to as "Huawei", "we", "us", or "our"), which is registered at No. 2 Xincheng Road, Songshan Lake Zone, Dongguan, Guangdong.
+
+Huawei takes your personal information and privacy seriously, and is committed to taking appropriate security measures to protect your personal information in accordance with relevant laws and established industry security standards. We have specially formulated this Statement to help you learn about how the Services collect, use, disclose, protect, store, and transmit your personal information. Please read this Statement carefully.
+
+In addition to the Services, HarmonyOS enables you to access and use Huawei or third-party apps and services that are pre-installed or downloaded by you. For information such as that about how these apps and services process your personal information, please refer to their privacy statements.
+
+1 How We Collect and Use Your Personal Information
+
+We will provide you with the system services described below based on HarmonyOS. We will process information required for providing the features/services as described below when you use them. If you do not provide the related information, your use of the Services may be affected.
+
+1.1 Software update services
+
+Software update services are basic services for updating the system on your device. During use, the services need to connect to the Internet to check for and download updates as well as to perform business operation and maintenance analysis, thereby providing the system and custom service update services.
+
+(1) System ROM updates
+
+To update your system and parameters (including the time zone and device parameters) in a timely manner for improving our products (or services), we need to collect your following information: device identifiers (including SN and SOCID), device model, system settings, operating system, system configuration information, system properties, battery level information, IP address, and WLAN information (Wi-Fi status). Among the information, the WLAN information (Wi-Fi status) will only be processed locally and will not be uploaded to any Huawei server.
+
+We will use your personal information in the following ways: The aforementioned information you provide will be used to find and push suitable ROM versions for your device. To address potential risks in the system, the latest version will be downloaded and then used for an automatic update with your consent or when required to fix urgent system security loopholes.
+
+(2) Custom service updates
+
+To update custom services, we need to collect your device identifier (SN), device model, and operating system information, thereby providing custom service updates that match your device. We will not store your personal information on the cloud.
+
+(3) Business operation and maintenance analysis
+
+To improve your update experience, we need to collect your following information: device identifiers (including SN), device model, system settings, operating system, system configuration information, system properties, battery level information, IP address, and WLAN information (Wi-Fi status). A device analysis report will be generated for business operation and service analysis and improvement. Information in the report is statistically aggregated and cannot be used to identify you.
+
+1.2 Message pushing services
+
+Message pushing services enable us and other app developers to send push messages to your device. To ensure the delivery of messages, we need to establish a secure and reliable message sending channel between your device and the push server. During your use of an app or service, we will collect and use your following information and upload the information to the Huawei server: network information, device model, device identifier, system settings, operating system, device hardware information, device status and running records, WLAN information (Wi-Fi status), and basic app information. To locate app problems and improve services, we will collect and use your following information for product O&M during your app or service use: network information, device model, device identifier, system settings, operating system, device hardware information, device status and running records, WLAN information (Wi-Fi status), and basic app information.
+
+1.3 System-level web services
+
+System-level web services provide you with basic features related to web browsing. The services need to connect to the Internet. During your use of the services, relevant configuration data will be downloaded based on the enabled features. Malicious website blocking is enabled by default, and your web browsing records will be uploaded in anonymized and encrypted form to identify and block malicious websites when you browse web pages. Once the identification is complete, the data will be deleted and will not be stored. You can also manage the malicious website blocking scope by going to system Settings > Privacy & security.
+
+1.4 Finding services
+
+Finding services are provided for you to protect your device's security. In case your device is lost or subject to unauthorized use or unexpected restoration to factory settings, the finding services will provide the Activation lock feature to secure your device. To prevent others from activating your device without your permission and increase your chances of getting your device back, the finding services need to connect to the Internet and collect and use your HUAWEI ID information, device identifier (SN and SOCID), and information about your use of the services. We will not store your personal information on the cloud.
+
+1.5 Digital rights management services
+
+Digital rights management (DRM) services provide secure data encryption and decryption to furnish copyright protection for digital assets on your device. The services require an Internet connection and need to collect and use your device name, device model, SOCID, and operating system version to issue DRM certificates and perform copyright protection.
+
+1.6 Basic AppGallery services
+
+Basic AppGallery services provide download, installation, and management features based on apps and lite services. During use, the services require an Internet connection. In addition, they need to read the WLAN information (Wi-Fi status and Wi-Fi parameters) to provide features such as app and lite services download and network notification, and read and transmit your list of installed apps to provide features such as security check and risk alerts, unified privacy pop-up information, on-demand app and lite services loading, and malicious redirection control. This ensures secure app and lite services download and use, and prevents fraud and other malicious activities. Among the information, your list of installed apps will not be stored on the cloud.
+
+1.7 System storage services
+
+System storage services include calendar storage services and contacts storage services. Calendar storage services provide basic capabilities such as calendar event storage, access, and reminder notification. During use, the services need to read the calendar event data to record and save event reminders so that they can be made available to apps. Contacts storage services provide basic capabilities such as storing and accessing contacts and call logs. During use, the services need to read and modify the contacts and call log data for managing the contacts and call logs.
+
+1.8 Auto-discovery services
+
+Auto-discovery services provide the capability to automatically discover supported devices nearby and prompt you to complete the connection and authentication process. During use, the services require an Internet connection, need to use Bluetooth and NFC, and need to read and transmit the Bluetooth MAC address, WLAN MAC address, and NFC tag information for the purposes of near-field device discovery, authentication, and connection.
+
+1.9 Common security services
+
+Common security services provide basic security capabilities for your device, such as security check and management, device certificate management, device authentication credential management, and encrypted data sharing. During the use of the services, security check and management need to connect to the Internet and read and transmit the device identifier, HUAWEI ID information, and list of installed apps to perform device security check and obtain applicable security protection policies. Device certificate management needs to connect to the Internet and read and transmit the device identifier to apply for and update the device certificates, thereby providing device identity authentication services based on the device certificates. Device authentication credential management needs to connect to the Internet and read and transmit the HUAWEI ID information, device identifier, device model, and system username to apply for and update the authentication credentials. In this way, we can provide protection for cross-device data transmission based on the authentication credentials, and provide the feature to complete verification using security verification codes when you log in to your HUAWEI ID or when you use services such as those for locating devices that are offline. Encrypted data sharing needs to connect to the Internet, read and transmit the HUAWEI ID information and device identifier for applying for data protection credentials, and use the phone number or email address you submit to query the corresponding HUAWEI ID (account UID, profile picture, and nickname), thereby providing the HUAWEI ID-based feature to share data with encryption security. Data encryption & recovery needs to connect to the Internet and read and transmit the password, HUAWEI ID information, device identifier, device hardware information (including device model), and personalized device settings. Such information will be used to identify your data and provide identifier-based data storage capabilities, thereby helping recover data when the device hardware is faulty. In addition, it is necessary to read the nickname, profile picture, and HUAWEI ID information to display information about your currently linked and logged-in HUAWEI ID. Data encryption & recovery will be enabled by default. If your device and HUAWEI ID meet the requirements, you will be able to use your HUAWEI ID to assist in data recovery.
+
+1.10 Smart Diagnosis Basic Services
+
+Smart Diagnosis Basic Services provide the device fault detection feature, and can alert you to send your device for repair in a timely manner when serious problems such as memory aging and mainboard errors occur on your device. Smart Diagnosis services require an Internet connection to update the fault diagnosis logic, and need to collect your device identifier (SN) to provide you with timely maintenance services as well the operation analysis services.
+
+1.11 Super Device services
+
+Super Device services support display of and quick collaboration between trusted devices. During use, the services and their underlying services need to do the following for the purposes of automatically discovering, authenticating, and connecting trusted devices and enabling collaboration across the devices: connect to the Internet, enable Bluetooth and WLAN, and read and transmit information about this device and the trusted devices (including Bluetooth and WLAN MAC addresses, device identifiers, device names, and device types), network information (whether WLAN is connected), and account information (nickname and login status). This data is only used locally on trusted devices and will not be uploaded to any server. You can use distributed collaboration services such as Multi-Screen Collaboration, wireless projection, and audio projection. For example, when you use the Multi-Screen Collaboration feature in the services, the feature needs to use the Bluetooth and WLAN features and read and transmit the Bluetooth MAC address, in order to allow you to view and operate your phone and sync clipboard data on your tablet and PC. When you select a Vision device and use the wireless projection feature in the services, the feature needs to use the system's screen recording capability to project the screen contents and system sounds from this device to the Vision. When you use the audio projection feature in the services, which allows you to cast audio from this device to a paired audio device, the feature needs to obtain information about the audio device (including Bluetooth MAC address, device type, and device name) to transfer audio across the devices in real time.
+
+1.12 Fusion Search Service
+
+Fusion Search Service is a basic data indexing service of the system, which provides data search interfaces for apps such as Celia, Celia Search, and Gallery to enable efficient and accurate searches. During use, this service requires an Internet connection (for experience improvement, wherein your personal information will not be collected), and needs to read the list of installed apps, media data (such as photos, videos, and audio), file data, contacts, and calendar event data to provide local data search services for related apps.
+
+1.13 Basic HarmonyOS Connect services
+
+Basic HarmonyOS Connect services provide upper-layer apps with APIs for device discovery, network configuration, registration and addition, and control and management. Information involved in the APIs includes the HUAWEI ID information, device information (including device hardware information, device identifier (including SN), MAC address, and device name), and personalized device settings (including IoT smart device service parameters). The aforementioned information will only be collected when the upper-layer apps use the APIs provided by the services. For details about the collection scenarios, please refer to the descriptions provided by the upper-layer apps. During use, the services need to connect to the Internet and use Bluetooth, NearLink (supported only by some devices), and WLAN.
+
+1.14 Picker services
+
+Picker services are system component capabilities we provide for developers and users. If an app that has integrated the picker services requests access to any sensitive data stored in the system (including media data, contacts, file data, and location information) or any sensitive system components (including camera and microphone), the operating system will provide an interface to directly interact with the user, thereby restricting direct access by the app. In this way, user privacy can be better protected while the related app functionality is maintained.
+
+To provide the aforementioned feature, the picker services need to do the following: locally read the media data (images, videos, and audio), contacts, and file data, in order to display sensitive data to the user and allow the user to select sensitive data that can be accessed by the app; or enable the camera or microphone, in order to allow the user to easily access features such as taking photos, recording videos, or scanning cards or documents. Particularly, in the case of accessing file data, the file picker service will locally read the list of installed apps to display the file processing capabilities (such as format conversion, compression, and encryption) that file processing apps provide for the user.
+
+The map picker service provides features such as viewing place details and selecting places. During use, this service requires an Internet connection and needs to collect and use your location information, in order to provide the ability to view locations and select places on the map. We will not store your personal information on the cloud.
+
+1.15 Basic system analysis services
+
+Basic system analysis services provide the capabilities to measure system running and interface calling, to ensure long-term stable running of the device. During use, the services need to connect to the Internet and collect the random device identifier, system settings, system properties, device model, MAC address, WLAN information (Wi-Fi connection status, Wi-Fi parameters, and Wi-Fi list), Bluetooth device list, motion status, approximate location information, operating system information, network information, running records, basic app information, app running status, and interface calling information, which will be used for product operation and user experience improvement.
+
+1.16 Lite service framework
+
+The atomic service framework provides atomic services with features such as unified service panel, recents and favorites records, and service notifications and updates. During use, the services need to connect to the Internet. We need to collect and use your HUAWEI ID information, device identifier, device model, device hardware information, network information, application usage information, application settings information, system properties, and list of installed apps to provide features for service assurance, such as service usage records and order status notifications, thereby ensuring security and reliability during the service usage and transaction processes. Among the information, the list of installed apps will not be stored on the cloud.
+
+1.17 Device activation services
+
+During use, the services require an Internet connection, and the device identifiers (including SN), approximate location information, device model, and operating system information need to be read and transmitted, to identify and activate the device and generate benefit information, thereby protecting your benefits.
+
+1.18 Pre-installed app management services
+
+Pre-installed app management services enable the installation, uninstallation, and restoration of pre-installed apps. During use, the services require Internet access, and need to collect your device identifier and device model and upload them to the Huawei server for policy configuration for the pre-installed apps.
+
+1.19 Authentication proxy services
+
+Authentication proxy services provide capabilities such as HUAWEI ID authentication proxy and app identity legitimacy verification proxy, improving performance, experience, and reliability in authentication scenarios. During use, the services need to connect to the Internet, read the list of installed apps, and collect and use your HUAWEI ID information and device identifier to verify the legitimacy of your account and your apps' identities in advance. Among the information, the list of installed apps will only be processed locally and will not be uploaded to any Huawei server.
+
+1.20 License management services
+
+During use, the services need to connect to the Internet to update the license file. We need to collect your device identifier (SN) and operating system information, and update the license file for the device based on the aforementioned information, in order to activate related licensed features. We will not store your personal information on the cloud.
+
+2 Protection of Minors
+
+We attach great importance to the protection of minors' personal information. Huawei will provide services and protection for minors in strict accordance with national laws and regulations. If you are a minor, your parents or legal guardians must agree to your use of the Services, and agree to the applicable terms and conditions. Parents or legal guardians should also take appropriate precautions to protect minors, including monitoring their use of the Services.
+
+In particular, if you are a child (a minor under the age of 14), please make sure to notify your parents or legal guardians about carefully reading with you this Statement and the Huawei Consumer Business Statement About Children's Privacy Protection (https://legal.cloud.huawei.com/legal/child/privacy-statement.htm?code=CN&language=en-US) specifically formulated by us before you use our services, and use our services or provide information to us with the consent and guidance of your parents or legal guardians. If you are a parent or legal guardian, please ensure that the child under your guardianship uses our services and provides us with information with your consent or guidance.
+
+3 Entrusted Processing and Sharing of Information
+
+3.1 Entrusted processing
+
+In some service scenarios, we will entrust other companies to process your personal information on our behalf, for example, companies that handle hotline calls, send emails, or provide technical support on behalf of Huawei. Such companies can only use your personal information for the purposes of providing services to you on behalf of Huawei. Huawei will enter into strict entrusted processing agreements or personal information processing terms with the entrusted party. The entrusted party is obligated to process related personal information in accordance with this Statement and our instructions and to take relevant confidentiality and security measures to ensure personal information security.
+
+3.2 Sharing with third parties
+
+Currently, the Services do not involve sharing personal information with third parties.
+
+4 Managing Your Personal Information
+
+Huawei highly respects your concerns regarding personal information. You can submit to us requests to exercise your rights as a personal information subject, such as those to access, rectify, copy, or delete your personal information, through the official website of Huawei Consumer BG, the My HUAWEI app, or the privacy center based on HUAWEI ID.
+
+If you submit a request through any other channels, such as hotline, service email address, online customer service, and service center, we will guide you to submit a formal request through the aforementioned channels to facilitate communication and feedback on the handling progress and result. Huawei maintains a dedicated request channel for personal information subjects, which serves to protect legitimate interests of personal information subjects, safeguard Huawei's normal operations, and prevent unauthorized or abusive use of the request rights in relation to personal information.
+
+We will make every effort to ensure that a response is made within one month after a personal information subject's access request is submitted. Given the complexity and volume of requests, this timeframe may be appropriately extended when necessary. If the provision of information is delayed, we will notify the personal information subject of the situation and the reasons for the delay.
+
+If you have any further requests, questions, comments, or suggestions regarding your rights as a data subject, please contact us using the contact information provided under the "Contacting Us" section of this Statement.
+
+5 Information Storage Location and Retention Period
+
+5.1 Storage location
+
+The aforementioned information will be sent to and stored on servers in the People's Republic of China.
+
+5.2 Retention period
+
+During the provision of the Services, we will process your personal information on your device wherever possible. We will retain your personal information we collect only for the period necessary to fulfill the purposes described in this Statement, and delete or anonymize your personal information beyond the retention period, except as otherwise stipulated by applicable laws and regulations.
+
+In the software update services, personal information collected for system ROM updates will be retained for six (6) months, and personal information for business operation and maintenance analysis will be retained for five (5) years.
+
+Among information collected in the message pushing services: information used for product O&M will be retained on the server for up to five (5) years; while other personal information will be retained on our server for up to one (1) year.
+
+DRM certificates in the DRM services will remain valid for the lifecycle of your device and will be retained for ten (10) years together with the device information.
+
+Personal information collected in the common security services will be retained for up to three (3) years. Among such information, personal information collected by the device authentication credential management services, data encryption & recovery services, and encrypted data sharing services will be deleted immediately after you delete your HUAWEI ID.
+
+Personal information collected in the Smart Diagnosis Basic Services will be retained for two (2) years.
+
+Information collected by the basic system analysis services will be retained for five (5) years.
+
+Personal information collected by the atomic service framework will be deleted immediately after you delete your HUAWEI ID.
+
+Personal information collected by the device activation services will be retained for seven (7) years.
+
+Personal information collected in the pre-installed app management services will be retained for six (6) months.
+
+Personal information collected by the authentication proxy services will be retained for two (2) years.
+
+In the event that we discontinue our products or services, we will notify you in the form of a push notification, announcement, or by other means, and delete or anonymize your personal information within a reasonable period of time.
+
+6 Contacting Us
+
+We have appointed the person responsible for personal information protection who you can contact from here (https://consumer.huawei.com/en/legal/privacy-questions/). You may also contact us by visiting the Privacy Questions page (https://consumer.huawei.com/en/legal/privacy-questions/). We will reply as soon as possible.
+
+If you are not satisfied with the response you receive, especially if you feel that our processing or handling of your personal information has violated or infringed on your legal rights and/or interests, you may seek external resolution, whether by filing a lawsuit with the people's court in the relevant jurisdiction, submitting a complaint to the industry self-regulation association or relevant government regulatory agencies, or by other means. You may also consult us regarding the available channels for voicing your complaint. Huawei's collection and use of your personal information is governed by our privacy policy. For more information, please refer to the Huawei Consumer Business Privacy Statement (https://legal.cloud.huawei.com/legal/privacy/statement.htm?country=CN&language=en_US).
+
+
+4/4:
+---------------------------------------
+HarmonyOS Software License and Service Agreement
+Last updated: July 30, 2024
+
+The HarmonyOS Software License and Service Agreement (hereinafter referred to as this "Agreement") is entered into and concluded by and between you (an individual, a company, or any other entity) and Huawei Device Co., Ltd. (hereinafter referred to as "Huawei", "we", "us", or "our") regarding the use of this Software (as defined in Section 2 herein) and its services. Before you use your Huawei wearable device or download any updates to this Software contemplated under this Agreement, please read this Agreement carefully, especially any clauses about exclusion or limitation of liability, governing laws, dispute resolution, and other important terms written in bold to draw your attention. This Agreement is applicable only to Huawei wearable devices (HUAWEI WATCH Series smart watches), including the corresponding industry edition devices. An industry edition device refers to a Huawei wearable device that can be paired with non-Huawei apps (hereinafter referred to as an "industry edition smart watch").
+
+Contents
+
+1 Acceptance of Our Terms
+
+2 About This Software
+
+3 Software License Grant
+
+4 Limitations of Use
+
+5 Software Updates
+
+6 Services of This Software
+
+7 Data Use and Privacy Protection
+
+8 Third-Party Software Statement
+
+9 Termination and Survival
+
+10 Disclaimers
+
+11 Limitation of Liability
+
+12 Technical Support
+
+13 Export Controls
+
+14 Contacting Huawei
+
+15 Dispute Resolution and Governing Laws
+
+16 Entire Agreement
+
+1 Acceptance of Our Terms
+By using the Huawei wearable device or downloading updates to this Software, you indicate that you agree and accept to be bound by the terms of this Agreement.
+
+If you do not agree to this Agreement, please do not use this Huawei wearable device or download any updates to this Software. You can request a refund by returning the Huawei wearable device to the franchise store, authorized distributor, or retail store where you purchased the device, subject to the applicable return policy. However, you should be aware that, if you request a refund from a retail store, the store's own return policy may also apply. The return policy shall be governed by the relevant laws and regulations of the country/region where the goods are purchased.
+
+Currently, the Huawei wearable devices are not intended for use by children. If you have paired and connected such a wearable device to the Health app or another companion app using a child account, please stop using the device. If you attempt to pair and connect the wearable device with the Health app or another companion app using a child account, the pairing and connection will fail. If a child uses our services without logging in with a child account, we will be unable to implement the aforementioned restrictive protection measure. If a child is allowed to use this wearable device without a child account, such use shall be under sole supervision of the parent or guardian.
+
+If you are a minor, please read this Agreement with your parents or legal guardians to ensure that they clearly understand the content of this Agreement before you decide on whether to use this device or download updates to the Software. Please do not use this device or download updates to the Software before you have obtained consent from your parents or legal guardians. Some apps may not be available for use by minors, depending on the circumstances.
+
+You may visit the Huawei website (consumer.huawei.com) to view a copy of this Agreement at any time and retain a copy of this Agreement for future reference. If you have any questions regarding this Agreement, please contact us using the contact information provided in Section 14 "Contacting Huawei".
+
+2 About This Software
+Software under this Agreement refers to:
+
+(1) Software components provided to you along with the Huawei wearable device, including but not limited to the code and other embedded software, documents, interfaces, content, and fonts that are stored on the Huawei wearable device, as well as any data protected by the copyright of Huawei or its licensors;
+
+(2) Updates or upgrades to the software specified in (1).
+
+You agree that this Agreement will apply to any Huawei software (including but not limited to operating systems, apps, and Feature Abilities) that may be installed on your wearable device, unless such software is accompanied by a separate software license agreement, in which case, you agree that the separate software license agreement will apply to your use of such software.
+
+This Software may also contain software components that are protected by copyright of third parties and granted open source software licenses by such third parties ("Open Source Software Components"). Such Open Source Software Components are identified as such through license information provided within the wearable device, which also indicates the open source software licenses applicable to such components. For this reason, the terms and conditions of the open source software licenses shall apply when you are using such Open Source Software Components. This Agreement does not alter any rights or obligations you may have under such open source software licenses. If there are any conflicts between the license conditions set forth in this Agreement and anything about any Open Source Software Components in their open source software licenses, such open source software licenses shall prevail.
+
+Unless otherwise agreed upon, this Software shall be bound by this Agreement, regardless of whether this Software is stored in a read-only memory or any other media or form, or is from any online download location authorized by Huawei.
+
+3 Software License Grant
+You are granted a limited and non-exclusive license to use this Software on one Huawei wearable device, subject to and in accordance with this Agreement, and may not sell, transfer, or use it for any other commercial purposes.
+
+Huawei licenses this Software to you for use, rather than sells or transfers it to you. You shall only use this Software in conformity with the terms and conditions of this Agreement. Huawei and its licensors own and retain all rights and titles to the Software and reserve any other rights not expressly granted to you by this Agreement.
+
+4 Limitations of Use
+4.1 You may not use Huawei's technologies or intellectual properties to develop software or design, develop, manufacture, sell, or license third-party devices/accessories associated with the Huawei wearable device without prior permission from Huawei.
+
+4.2 You may make a copy of this Software and save it on a computer hard drive or other storage media for the purpose of archiving. However, you may not distribute or make available this Software over a network where it could be used by multiple devices at the same time.
+
+4.3 You may not sell, rent, lease, lend, sublicense, or distribute the entirety or part of the Software (including but not limited to apps, services, code, and source code operated under this Software) to any third party without prior written permission from Huawei. You may make a one-off permanent transfer of the entire license to the Software to another party along with the transfer of ownership of your Huawei wearable device, provided that: (1) the transfer includes your Huawei wearable device and all the Huawei Software; (2) you do not retain copies of all or part of this Software; and (3) the party that receives the Huawei wearable device and this Software has read and accepted all the terms and conditions of this Agreement.
+
+4.4 You shall not allow any third party to copy, decompose, reverse engineer, decompile, disassemble, or create derivatives of this Software without prior written permission from Huawei. In addition, you shall not allow any third party to or attempt to export the source code of this Software, or decode or alter this Software or any part of this Software or any service that it provides.
+
+4.5 You acknowledge and agree that you shall not use this Software to carry out the following activities:
+
+Copy or use this Software beyond the authorized scope under this Agreement;
+Use this Software in a deceptive manner or for a deceptive purpose;
+Delete any copyright statement or notice contained in this Software;
+Attempt to damage, bypass, change, invalidate, or evade any digital rights management (DRM) system that is related to this Software and/or is intrinsic to this Software;
+Engage in any other improper or illegal acts.
+4.6 While using this Software for storage or copying, you need to be authorized by relevant right holders in particular countries or regions. Huawei Software may only be used to reproduce non-copyrighted materials, materials for which you own the copyright, or materials you are authorized or legally permitted to reproduce. You understand that ownership and intellectual property rights of any material displayed, stored, or accessed via your device belong to the owner of the material. Such materials may be protected by copyright law or other intellectual property laws and treaties, and you may need to comply with the agreement or terms of use stipulated by the third party that provides such materials. Unless otherwise agreed upon, this Agreement does not grant you any right to use such materials, nor does it guarantee that you can continue to use them.
+
+4.7 You agree that you shall only use the Software in compliance with all applicable laws and regulations of your country or region of residence or use, including but not limited to the local laws of the country or region where you reside or download or use the Software and services.
+
+5 Software Updates
+5.1 To provide you with a better user experience, Huawei may provide you with software update services, including but not limited to system software updates and app updates. We provide update services for this Software to improve the performance, safety, and reliability of products or wearable devices, or to meet functional customization requirements from carriers. Updates to this Software can be installed in different ways, and include bug fixes, system software updates, app updates, updates to any previously installed software (including all-new versions), and performance enhancements.
+
+5.2 Your Huawei wearable device will automatically search for and download update packages over the Internet to provide you with timely update services. These updates are designed to fix cyber security loopholes and prevent new security threats. You acknowledge the necessity of receiving and installing system security update patches in a timely manner. Due to the importance of these updates, your wearable device may automatically install some downloaded updates, and provide timely update notifications to help you understand the related information. We strongly recommend that you keep the default configurations of your wearable device to avoid software issues resulting from delayed updates. If you want to change the default settings for system software updates, you can go to Settings, touch the device name to enter the About screen, touch the system card to enter the Software update screen, touch Settings, and turn off the switches concerned. You also understand that some apps are provided with an automatic update feature and can automatically download and install updates to your device. Huawei apps will only be automatically updated over WLAN. You can disable this feature on the settings screen in the app concerned.
+
+5.3 Updates that Huawei provides to replace or supplement this Software shall be governed by this Agreement, unless such updates are accompanied by a separate software license agreement, in which case you will be governed by that separate software license agreement.
+
+5.4 You understand and acknowledge that if you decide not to install the software updates provided by Huawei, this may put your wearable device and Software at security risks and may cause the Software to be unavailable or unstable. Some features of the Software may be subject to version restrictions, and you need to update to the latest version to experience them.
+
+6 Services of This Software
+6.1 This Software allows you to access such relevant apps and services of Huawei and its affiliates as well as third parties that come with this Software (collectively the "services" and individually a "service"), including but not limited to HarmonyOS and system-related services, Huawei Mobile Services, and third-party services and websites. The specific contents of the services are provided by the respective service providers according to the actual situation. Each of the service providers may change the services they provide at any time, and the provided service contents may vary from time to time.
+
+(1) HarmonyOS and system-related services: HarmonyOS is a next-generation operating system for smart devices, providing a unified language for enabling intelligence, interconnection, and collaboration across different devices. It gives a neat, smooth, seamless, secure, and reliable interaction experience in all scenarios. Based on HarmonyOS, Huawei and its affiliates will provide you with system-related services such as system settings, file management, security management, device communication, software updates, message pushing, wearable system services, and wearable collaboration services. After your device is paired with the (Huawei) Health app or another companion app on your phone, the wearable system services allow the app to display the device information and app information.
+
+(2) Huawei Mobile Services: This Software enables you to access and use such products, apps, and services provided by Huawei and its affiliates that are pre-installed by us or available for you to download and install, such as HUAWEI ID, AppGallery, HUAWEI Music, and HUAWEI Assistant. To use such services, you may be required to create and log in to your HUAWEI ID and agree to additional service agreements, and some services may also require you to pay additional fees. By creating your HUAWEI ID and using these services, you indicate that you agree to and accept the applicable terms & conditions.
+
+(3) Huawei Pay services: Such services are provided and operated by Petalpay (Shenzhen) Co., Ltd. You must agree to and accept the terms and conditions such as Huawei Pay Service Agreement before you can activate and use the Huawei Pay services.
+
+(4) Health & fitness apps & services include various apps and services provided by Huawei with a focus on promoting fitness and health for consumers. For example, the fitness apps may include Workout, Workout status, Activity records, Workout records, Barometer, and Stay Fit, and the health apps may include Heart rate, Sleep, Breathing exercises, Emotional wellbeing, SpO2, Blood pressure, Cycle Calendar, Health Clovers, Body temperature, Skin temperature, High altitude monitoring, ECG, Arterial stiffness detection, Pulse wave arrhythmia analysis, Health Glance, and Health summary. Your consent is required for the aforementioned fitness and health apps to obtain your fitness and health data from the underlying services, which will collect such data and store it locally. We will sync the fitness and health data to the (Huawei) Health app or another companion app on the phone paired with the wearable device. You can cancel the data sync by disabling Bluetooth on the wearable device. In addition, your fitness and health data will be synced to Health Service Kit on your watch. You can choose whether to authorize the data to be uploaded to the Huawei server by going to Settings > Privacy & security > Health Service Kit. However, some services are regional and may therefore not be available in all languages or in all areas. Features may vary by area, and some may be restricted or may not be provided by your service provider. In addition, certain features may be affected or restricted by the wearable device's hardware and data access and are not necessarily available on all wearable devices. You understand and agree that the availability on different wearable devices is not exactly the same, and what apps and services are available to you may vary depending on the wearable device and software you use. To ensure and improve your user experience, the aforementioned services will collect your fitness data such as workout route, workout type, workout duration, step count, and distance covered, as well as your health data such as sleep, heart rate, blood oxygen, and body temperature data.
+
+6.2 You understand and acknowledge that some of the aforementioned services are regional and therefore are not necessarily available in all languages or in all areas. Some features may vary by area, and some may be restricted or may not be provided by your service provider. Certain features of this Software may require Internet access. Unless your wearable device is connected to the Internet through WLAN, this Software will access the Internet using your mobile data and may incur additional costs as a result. For details, please contact your carrier. Some of the services may provide you with various kinds of information (including but not limited to stock information and location information). Huawei and its affiliates and licensors do not guarantee the availability, accuracy, integrity, reliability, or timeliness of such information. In addition, you understand and acknowledge that certain features of this Software may be affected or restricted by device hardware and data access and are not necessarily available on all devices.
+
+7 Data Use and Privacy Protection
+7.1 We will provide you with relevant system services based on HarmonyOS. We will process information required for providing the features/services when you use them. If you do not provide the related information, your use of the features/services may be affected. For example, for the purpose of enabling us and third-party app developers to push messages to your wearable device, we need to collect your device information, network information, and app information to establish a secure and reliable messaging channel between your device and the push server. For details about how HarmonyOS and related basic system services process your personal information, please refer to the Statement About HarmonyOS and Privacy.
+
+7.2 If you use Huawei Mobile Services, Huawei Wallet Pay services, or other services or features provided by Huawei or its affiliates, you are likely to be presented with a special privacy statement or supplemental notice (hereinafter referred to as "Product-specific Privacy Notice") made available by the service provider in respect of the product or service. Please carefully read such Product-specific Privacy Notice, which will provide basic information such as how the service or feature processes your personal information, how you can exercise your data subject rights, who is the data controller, and how to contact the data controller.
+
+7.3 Huawei fully respects your privacy rights. In addition to each Product-specific Privacy Notice, we have specially formulated the Huawei Consumer Business Privacy Statement(https://legal.cloud.huawei.com.cn/terms/scope/huawei/privacy/statement.htm?code=CN&branchid=0&language=en-US&contenttag=default) to help you get information such as that about the overall situation of our personal information collection and use, as well as our measures for protecting personal information security. We will collect, use, disclose, protect, store, and transmit your personal information always in strict accordance with the Huawei Consumer Business Privacy Statement.
+
+8 Third-Party Software Statement
+8.1 Your Huawei wearable device may include certain third-party apps or services ("third-party software"). Such third-party software may display, contain, or provide content, data, information, apps, or materials from third parties, or provide links to certain third-party websites. Huawei does not own such third-party software or its related intellectual property rights. Therefore, you understand and acknowledge that Huawei does not assume obligations to provide support for such third-party software, does not guarantee that such third-party software's content or services will stay available at any time, and is not liable for any content, ads, products, services, and other materials provided in such third-party software.
+
+8.2 You understand and acknowledge that names, logos, and content of third-party software will be loaded and displayed on your wearable device for your convenience, and such display does not constitute any endorsement, warranty, or recommendation by us of the third-party software. You further understand and acknowledge that when using third-party software, you may be subject to the terms of use and license agreement related to the third-party software. Therefore, your use of third-party software is at your own risk.
+
+8.3 Except as agreed between you and the provider of the third-party software, you agree not to modify, rent, lease, sub-license, distribute, or create derivative works based on the third-party software, and may not use the third-party software in any unauthorized manner, including but not limited to, using such software to transmit any type of computer virus, worm, Trojan, or other malicious software, invade a network, and overburden a network. You further agree not to use the third-party software in any manner that harasses, abuses, threatens, defames, or otherwise infringes upon the rights of any third party, and warrant that Huawei does not assume any liability for your such actions, or any harassing, threatening, defamatory, offensive, infringing, or illegal information or transmission that is incurred due to your use of the third-party software.
+
+9 Termination and Survival
+9.1 This Agreement is effective from the first date you install this Software. If you want to terminate this Agreement, you shall permanently delete, destroy, and return, at your own cost, this Software, all backup copies, and all related materials provided by Huawei. If you fail to comply with any of the terms or conditions of this Agreement, Huawei or its licensors have the right to terminate this Agreement at any time without prior notice. Upon the termination, you must immediately stop using this Software and delete all the Software and related materials that have been copied to and/or installed on your Huawei wearable device.
+
+9.2 Sections 7, 9, 10, 11, 12, 13, 14, 15, and 16 herein shall survive the termination of this Agreement.
+
+9.3 If a court of competent jurisdiction finds on any ground that any provision or any part of this Agreement shall be invalid, other provisions of this Agreement shall remain in force.
+
+10 Disclaimers
+10.1 YOU ACKNOWLEDGE THAT THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, AND TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, NEITHER HUAWEI OR ITS AFFILIATES OR LICENSORS NOR THE COPYRIGHT HOLDERS MAKE ANY REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, SATISFACTORY QUALITY, FITNESS FOR A PARTICULAR PURPOSE, ACCURACY, RIGHT TO CONFIDENTIALITY, AND NON-INFRINGEMENT OF THIRD PARTY RIGHTS. THERE IS NO WARRANTY BY HUAWEI OR BY ANY OTHER PARTY THAT THE FEATURES CONTAINED IN THE SOFTWARE WILL MEET YOUR REQUIREMENTS OR THAT THE OPERATION OF THE SOFTWARE WILL BE UNINTERRUPTED OR ERROR-FREE. YOU SHALL BEAR ALL RESPONSIBILITIES AND RISKS ARISING FROM YOU SELECTING THIS SOFTWARE TO ACHIEVE YOUR EXPECTED RESULTS, INSTALLING AND USING THIS SOFTWARE, AND OBTAINING RESULTS FROM IT.
+
+10.2 INSTALLING THIS SOFTWARE MAY AFFECT THE AVAILABILITY OF THIRD-PARTY SOFTWARE, APPS, OR SERVICES. THERE IS NO WARRANTY BY HUAWEI THAT THE FEATURES OR SERVICES CONTAINED IN THIS SOFTWARE WILL MEET YOUR REQUIREMENTS, THAT THIS SOFTWARE AND ITS SERVICES WILL BE FREE FROM ERRORS/BUGS, OR THAT THIS SOFTWARE WILL PROVIDE CONTINUOUS, PERMANENT SERVICES. IN ADDITION, HUAWEI MAKES NO WARRANTY THAT THIS SOFTWARE WILL BE COMPATIBLE WITH ANY THIRD-PARTY SOFTWARE OR SERVICES.
+
+10.3 YOU FURTHER ACKNOWLEDGE THAT HUAWEI SOFTWARE AND SERVICES ARE NOT INTENDED OR SUITABLE FOR USE IN SITUATIONS OR ENVIRONMENTS WHERE THE FAILURE OR TIME DELAYS OF, OR ERRORS OR INACCURACIES IN, THE CONTENT, DATA, OR INFORMATION PROVIDED BY THE HUAWEI SOFTWARE OR SERVICES COULD LEAD TO DEATH, PERSONAL INJURY, OR SEVERE PHYSICAL OR ENVIRONMENTAL DAMAGE, INCLUDING BUT NOT LIMITED TO THE OPERATION OF NUCLEAR FACILITIES, AIRCRAFT NAVIGATION OR COMMUNICATIONS SYSTEMS, AIR TRAFFIC CONTROL SYSTEMS, OR LIFE SUPPORT OR WEAPONS SYSTEMS.
+
+11 Limitation of Liability
+11.1 HUAWEI WILL NOT TAKE ANY RESPONSIBILITY FOR SOFTWARE USE PROBLEMS CAUSED BY ABUSE, MISUSE, OR UNAUTHORIZED MODIFICATION.
+
+11.2 TO THE EXTENT NOT EXPRESSLY PROHIBITED BY APPLICABLE LAW, IN NO EVENT SHALL HUAWEI OR ITS EMPLOYEES, LICENSORS, OR AFFILIATES BE LIABLE FOR ANY LOSS OF PROFITS, REVENUE, SALES, OR DATA, COSTS OF PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES, PROPERTY DAMAGE, PERSONAL INJURY, BUSINESS INTERRUPTION, OR LOSS OF BUSINESS INFORMATION, OR FOR ANY SPECIAL, DIRECT, INDIRECT, INCIDENTAL, ECONOMIC, PUNITIVE, OR CONSEQUENTIAL DAMAGES, ARISING OUT OF OR RELATED TO YOUR USE OF OR INABILITY TO USE THIS SOFTWARE, HOWEVER CAUSED, REGARDLESS OF THE THEORY OF LIABILITY (CONTRACT, TORT, NEGLIGENCE, OR OTHERWISE) AND EVEN IF SUCH PARTIES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. SOME JURISDICTIONS DO NOT ALLOW THE LIMITATION OF LIABILITY FOR PERSONAL INJURY, OR OF INCIDENTAL OR CONSEQUENTIAL DAMAGES, SO THIS LIMITATION MAY NOT APPLY TO YOU.
+
+11.3 IN NO EVENT SHALL HUAWEI'S TOTAL LIABILITY TO YOU FOR ALL DAMAGES (OTHER THAN AS MAY BE REQUIRED BY APPLICABLE LAW IN CASES INVOLVING DEATH OR PERSONAL INJURY RESULTING FROM HUAWEI'S NEGLIGENCE) EXCEED THE AMOUNT YOU PAID FOR YOUR HUAWEI WEARABLE DEVICE.
+
+11.4 The laws of some countries/regions do not allow certain warranties, guarantees, or liabilities to be excluded or limited by an agreement. If these laws apply to you, some or all of the exclusions or limitations mentioned herein may not be applicable and you may have additional rights. Nothing in this Agreement affects the rights that you are legally entitled to as a consumer, or which you cannot contractually agree to alter or waive.
+
+12 Technical Support
+Huawei is not obligated to provide you with any technical support for the Software under this Agreement except as required by law. No oral or written information or opinion given by Huawei or its authorized representatives constitutes any warranty. If you discover that the Software or its services are defective, you must bear all necessary maintenance or correction costs.
+
+13 Export Controls
+You may not use or otherwise export or re-export Huawei Software except as authorized by applicable laws and the laws of the jurisdictions in which the Huawei Software was obtained.
+
+14 Contacting Huawei
+If you have any questions, comments, or suggestions, please contact us via the customer service hotline 950800, via the online customer service, or at our global offices. For a complete list of our offices, please visit the Contact Huawei(https://consumer.huawei.com/en/support/contact-us/) page.
+
+15 Dispute Resolution and Governing Laws
+The validation, interpretation, modification, performance, and dispute resolution of this Agreement shall be governed by the laws of the People's Republic of China, without regard to its conflict of laws rules. You agree that this Agreement is signed in Longgang District, Shenzhen. Any dispute arising in relation to the content or performance of this Agreement shall be settled through negotiation made in good faith. If such negotiation fails, either party may submit the dispute for resolution by litigation at the people's court with proper jurisdiction in the place where this Agreement is signed. You will also benefit from any and all mandatory provisions of the laws of your country/region of residence. Nothing in this Agreement affects any rights you have as a consumer under mandatory provisions of local law.
+
+16 Entire Agreement
+This Agreement constitutes the entire agreement between you and Huawei in respect of the use of this Software and supersedes any prior agreements between you and Huawei relating to the use of this Software. You may also be subject to additional terms and conditions that may apply when you use or purchase open-source software, third-party content, or other Huawei services.
+
+Copyright (c) Huawei Device Co., Ltd. 2024. All rights reserved.
+
+---------------------------------------
+HarmonyOS SDK License Agreement
+
+1. Definition
+
+1.1 Huawei refers to the signing entity, in accordance with Clause 11 herein, which provides you with the HarmonyOS SDKs.
+
+1.2 HarmonyOS SDKs refers to the software development kits provided by Huawei that contains system files, integrated APIs, toolchains, previewer, technical documents, and subsequent updates.
+
+1.3 HarmonyOS refers to a brand-new distributed operating system that is oriented to a wide range of scenarios.
+
+1.4 Compatible device refers to a device that complies with the Product Compatibility Specifications, which can be obtained by going to Design  Compatibility on https://device.harmonyos.com and may be updated in the future.
+
+2. About This Agreement
+
+2.1 The HarmonyOS SDK License Agreement (hereinafter referred to as this Agreement) is a legally binding agreement made and entered into between you and Huawei. Huawei will license you to use the HarmonyOS SDKs in accordance with this Agreement. By reading this Agreement, you will understand the rules for using the HarmonyOS SDKs and other important information. Please read this Agreement carefully. By clicking the Accept button below this Agreement or by using the HarmonyOS SDKs, you shall be deemed as having fully understood and accepted the terms contained herein. If you do not agree to the terms of this Agreement, you shall not use the HarmonyOS SDKs.
+
+2.2 You must meet the following criteria You have reached the legal age of majority so that you are competent to enter into a legally binding agreement with Huawei; you possess full legal capacity to conclude, understand, and perform this Agreement with Huawei and are able to assume the legal liability for any and all breaches thereof; you are not otherwise forbidden to use HarmonyOS SDKs in accordance with applicable laws. If you enter into this Agreement on behalf of an entity, you undertake that you have the qualification and ability to enter into this Agreement on behalf of the entity and that the entity possesses the qualification, authorization, or license(s) required to enter into this Agreement with Huawei.
+
+3. License
+
+3.1 Huawei grants you a limited, non-exclusive, free, non-transferable, non-sublicensable, and revocable license worldwide for you to download, install, copy, integrate, and run the HarmonyOS SDKs to develop applications that run on compatible devices.
+
+3.2 You shall not use HarmonyOS SDKs to develop applications or other SDKs for incompatible devices. If you do not use HarmonyOS SDKs, you can develop applications for other platforms, including incompatible devices.
+
+3.3 All rights and interests related to HarmonyOS SDKs are owned by Huawei, including any intellectual property rights. Huawei reserves all rights that are not explicitly granted to you.
+
+3.4 This Agreement does not contain any terms that grant you the right to use any of Huawei's trademarks, logos, domain names, company names, product names, or other brands.
+
+3.5 Huawei agrees not to obtain any rights or interests, including any intellectual property rights, of the applications that you have developed using HarmonyOS SDKs from you (or your licensor) in accordance with this Agreement.
+
+4. Usage Rules
+
+You agree that you will not perform the following activities, or allow or encourage any third party to perform the following activities
+
+(a) Use HarmonyOS SDKs for any purposes that are not explicitly allowed by this Agreement or that are not allowed by applicable laws and regulations;
+
+(b) Use HarmonyOS SDKs to implement functions that are prohibited by applicable laws and regulations during application development;
+
+(c) Use HarmonyOS SDKs to interfere with, damage, disrupt, or access without authorization the server, network, or other services of any subject;
+
+(d) Modify, adapt, redistribute, decompile, reverse-engineer, or disassemble HarmonyOS SDKs or any part of HarmonyOS SDKs, or create derivatives of HarmonyOS SDKs or any part of HarmonyOS SDKs;
+
+(e) Delete, cover, or modify any proprietary right statements (including copyright statements and trademark statements) that may be attached to or contained in HarmonyOS SDKs.
+
+5. Privacy and Data
+
+5.1 HarmonyOS SDKs will not collect any personal information from you or end users of your applications.
+
+5.2 To understand developers' requirements and improve the quality and experience of HarmonyOS SDKs, Huawei will collect information about your usage of HarmonyOS SDKs, such as the usage frequency of each function and operation logs.
+
+6. Cyber Security and Personal Information Protection
+
+6.1 During application development, you shall comply with the following network security requirements
+
+(a) Comply with local laws and regulations and ensure that there are no securitysafety risks or issues;
+
+(b) Do not attack or damage Huawei networks. Do not steal any data or information from Huawei or user devices. Do not crack accounts or passwords of Huawei users;
+
+(c) Do not implant unwanted code, malware, or backdoors in Huawei networks or user devices. Do not reserve any undisclosed interfaces or accounts;
+
+(d) Do not introduce any form of Trojan horse, backdoor, worm, virus, malicious code, unknown function, or unknown permission into your applications.
+
+6.2 If the applications you develop using HarmonyOS SDKs will collect and process user data, you shall inform users of the type of data that will be collected, the purpose of the collection, and the data processing methods, and you shall also obtain users' consent and provide users with privacy statements and protection measures that comply with applicable laws. You shall be responsible for resolving any privacy and security issues arising between you and your users related to your applications, and Huawei shall not be responsible for such issues.
+
+7. Disclaimer
+
+7.1 Huawei, its affiliates, principals, directors, employees, contractors, agents, third-party payment service providers, partners, licensors, and resellers (hereinafter collectively referred to as the Huawei Parties) do not take any responsibility, under any responsibility theory, for any direct, indirect, incidental, special, secondary, or punitive damage (including any loss of data, reputation, or profit) that you may suffer, irrespective of whether the Huawei Parties or their representatives have been informed, or whether the Huawei Parties or their representatives are aware of the possibility of any of the above-mentioned losses.
+
+7.2 HarmonyOS SDKs are provided on an as-is and as available basis without any representation or endorsement of any kind. To the maximum extent permitted by applicable laws, the Huawei Parties do not make any explicit or implicit guarantee, undertaking, representation, or warranty for the following
+
+(a) HarmonyOS SDK marketability, applicability for specific purposes, and non-infringement of any other's rights;
+
+(b) Integrity, accuracy, reliability, and timeliness of any content obtained through HarmonyOS SDKs;
+
+(c) HarmonyOS SDKs or the servers that accommodate HarmonyOS SDKs are free from defects, errors, viruses, bugs, or other harmful elements;
+
+(d) HarmonyOS SDK function defects will be fixed;
+
+(e) Future HarmonyOS SDK versions are fully compatible with applications developed based on previous HarmonyOS SDK versions.
+
+The Huawei Parties are not liable for any loss or damage caused by your full or partial reliance on HarmonyOS SDKs, your use of HarmonyOS SDKs, or any information obtained by your (or anyone else's) use of HarmonyOS SDKs.
+
+7.3 You shall bear full responsibility for any failure to fulfill obligations under this Agreement or any applicable third-party agreements, laws, and regulations, and for any consequences arising thereof, and Huawei does not assume any responsibility for you or any third party.
+
+7.4 The laws of some countries do not allow certain warranties, guarantees, or liabilities to be excluded or limited by a contract. If these laws apply to you, all or part of the above-mentioned exclusions or restrictions may not apply to you, but other content in this Agreement is not affected.
+
+7.5 You agree to select your country or region in the operating system where you use HarmonyOS SDKs according to the actual situation. You shall be solely responsible for the failure to select the factual country/region, and for any consequence arising thereof, such as data leakage. Huawei shall bear no liability.
+
+8. Indemnity
+
+8.1 To the maximum extent permitted by applicable laws, you shall defend, hold harmless, and indemnify the Huawei Parties against and from any and all claims, suits, and actions arising out of or in relation to any of the following events
+
+(a) Your use of HarmonyOS SDKs;
+
+(b) Your breach of any provision of this Agreement;
+
+(c) Your breach of any applicable laws and regulations;
+
+(d) Disputes between you and end users;
+
+(e) Your commitments and warranties to any third party regarding HarmonyOS SDKs under this Agreement;
+
+(f) Any claim that your application infringes upon or embezzles any third party's intellectual property rights or other rights.
+
+8.2 You acknowledge and agree to provide full assistance and cooperation in defending against the aforesaid claims, suits, and actions immediately upon reasonable request of the Huawei Parties.
+
+9. Termination
+
+9.1 This Agreement shall remain in effect unless you or Huawei terminates this Agreement in accordance with the provisions of this Agreement.
+
+9.2 You can terminate this Agreement by stopping using HarmonyOS SDKs.
+
+9.3 Huawei reserves the right to temporarily or permanently suspend, cancel, or restrict your use of part or all HarmonyOS SDKs, and suspend or terminate this Agreement without assuming any responsibility for you or any third party in any of the following circumstances
+
+(a) You violate, or Huawei believes you are about to violate this Agreement, including any agreements, policies, or guidelines incorporated herein;
+
+(b) You, or anyone acting on your behalf, acts illegally, or provides Huawei with any false or misleading information;
+
+(c) In response to requests by law enforcement or other government agencies under a valid legal process;
+
+(d) Unexpected technical, security, or business reasons.
+
+The expiry or termination of this Agreement does not affect the provisions of this Agreement that are expressed or by their nature to operate or have effect after deactivation or termination and is without prejudice to any accrued rights or obligations or any rights or obligations which are intended to survive such deactivation or termination.
+
+10. Amendments
+
+10.1 Huawei has been and will be updating and optimizing HarmonyOS SDKs. Huawei may add or delete functions, set new restrictions, or temporarily or permanently suspend or stop certain functions of HarmonyOS SDKs without any prior notice to you. Huawei may also amend this Agreement at any time based on the changes to the HarmonyOS SDKs.
+
+10.2 If changes to HarmonyOS SDKs or this Agreement severely affect users or restrict the use of HarmonyOS SDKs, Huawei will release a new version notice within a reasonable period after the changes. For the changes to HarmonyOS SDKs that Huawei needs to make to meet security, legal, or regulatory requirements, Huawei may not be able to meet the aforementioned timescales and Huawei will notify you of these changes as soon as possible.
+
+11. Signing Huawei Entities
+11.1. Your signing entity will be determined by the country or region ("Use Area") set in the operating system where you use HarmonyOS SDKs.
+
+11.2 If your Use Area is the Chinese mainland specified in Part I of Exhibit A hereto, you are entering into and concluding this Agreement with Huawei Software Technologies Co., Ltd. which is legally established and incorporated in the People's Republic of China, and you designate Huawei Software Technologies Co., Ltd. as your agent in the Chinese mainland.
+
+11.3 If your Use Area is the country(ies) and/or region(s) listed in Part II of Exhibit A hereto, you are entering into and concluding this Agreement with Aspiegel SE (formerly known as Aspiegel Limited) which is legally established and incorporated in Ireland, and you designate Aspiegel SE as your agent in such countries and regions.
+
+11.4 If your Use Area is the country((ies) and/or region(s) listed in Part III of Exhibit A hereto, you are entering into and concluding this Agreement with Huawei Services (Hong Kong) Co., Limited which is legally established and incorporated in Hong Kong (China), and you designate Huawei Services (Hong Kong) Co., Limited as your agent in such countries and regions.
+
+12. Governing Laws and Dispute Resolution
+
+12.1 If you are concluding this Agreement with Huawei Software Technologies Co., Ltd., you agree that the establishment, jurisdiction, and interpretation of this Agreement shall be governed by the laws of the People's Republic of China. You agree that this Agreement is signed in Longgang District, Shenzhen, P.R. China. Any and all disputes, compensation claims, and causes of action arising out of or in relation to performing this Agreement or receiving HarmonyOS SDKs under this Agreement shall be resolved in the court with jurisdiction over the place where this Agreement is signed.
+
+12.2 If you are concluding this Agreement with Aspiegel SE, you agree that the establishment, jurisdiction, and interpretation of this Agreement shall be governed by the laws of Ireland. You agree that any and all disputes, compensation claims, and causes of action arising out of or in relation to performing this Agreement or receiving HarmonyOS SDKs under this Agreement shall be submitted to the Irish Courts with jurisdiction in Dublin, Ireland, for litigation in the English language, without applying the United Nations Convention on Contracts for the International Sale of Goods.
+
+12.3 If you are concluding this Agreement with Huawei Services (Hong Kong) Co., Limited, you agree that the establishment, jurisdiction, and interpretation of this Agreement shall be governed by the laws of Hong Kong (China), you agree that any and all disputes, compensation claims, and causes of action arising out of or in relation to performing of this Agreement or receiving HarmonyOS SDKs under this Agreement shall be submitted to the courts in Hong Kong (China) for litigation in the English language, without applying the United Nations Convention on contracts for the International Sale of Goods.
+
+13. Miscellaneous
+
+13.1 This Agreement constitutes the entire legal agreement between you and Huawei and governs your use of HarmonyOS SDKs. This Agreement completely replaces any prior agreements between you and Huawei in relation to HarmonyOS SDKs.
+
+13.2 HarmonyOS SDKs may provide links to other websites or resources. You acknowledge and agree that Huawei is not responsible for the availability of such websites or resources, and does not endorse or take responsibility for any content, advertisements, products, or other information on or available from such websites or resources. Huawei is not responsible for any damage or loss caused or alleged to be caused by or in connection with the use of or reliance on any such content, goods, or services available on or through any such websites or resources.
+
+13.3 Nothing in this Agreement shall be construed to create a partnership or agency relationship between you and Huawei, and neither party shall have the right or authority to incur any liability debt or cost or enter into any contracts or other arrangements in the name of or on behalf of the other party.
+
+13.4 Huawei is not liable for any failure or delay in performance of its obligations under this Agreement that is caused or contributed to by matters beyond Huawei's reasonable control.
+
+13.5 If any provision of this Agreement is found by a court of competent jurisdiction or any other competent authority to be void, invalid, or unenforceable, it shall be deemed to be deleted from this Agreement, and all other provisions of this Agreement shall remain in full force and effect.
+
+13.6 Even if Huawei does not exercise any of the rights or remedies mentioned in this Agreement, it shall not be deemed that Huawei waives these rights or remedies. Huawei can still exercise these rights or take these remedies.
+
+13.7 The headings in this Agreement are for reading convenience only and have no legal effect.
+
+13.8 Huawei may assign or sub-contract any of Huawei's rights and obligations under this Agreement.
+
+13.9 You shall not distribute obligations under this Agreement or transfer or sublicense rights under this Agreement.
+
+Exhibit A - List of Countries/Regions
+
+Part I: Chinese mainland.
+
+Part II: Aland Islands, Albania, Andorra, Australia, Austria, Belgium, Bonaire, Bosnia and Herzegovina, Bulgaria, Canada, Croatia, Curacao, Cyprus, Czech Republic, Denmark, Dutch Caribbean, Estonia, Faroe Islands, Finland, France, Germany, Gibraltar, Greece, Greenland, Guernsey, Hungary, Iceland, Israel, Italy, Jersey, Latvia, Liechtenstein, Lithuania, Luxembourg, Malta, Moldova, Monaco, Montenegro, Netherlands, New Zealand, North Macedonia, Norway, Poland, Portugal, Ireland, Romania, Saba, Saint Vincent and the Grenadines, San Marino, Serbia, Sint Eustatius, Sint Maarten, Slovakia, Slovenia, Spain, St. Martin, St. Pierre and Miquelon (France), Sweden, Switzerland, Turkey, Ukraine, United Kingdom, United States, Vatican City.
+
+Part III: Other countries and regions.
+---------------------------------------
+

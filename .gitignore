@@ -30,3 +30,26 @@ build/
 tmp/
 temp/
 .cache/
+
+# ---- HarmonyOS / DevEco ----
+.hvigor/
+**/oh_modules/
+.ohpm/
+local.properties
+*.p12
+*.p7b
+*.cer
+*.csr
+signing.local.json
+signing.local.*.json
+/read-books/entry/src/ohosTest/resources/rawfile/private/
+*.pem
+*.key
+*.keystore
+*.jks
+*.hap
+*.hsp
+
+# Generated device captures may contain personal book text and profile data.
+/docs/qa/*
+!/docs/qa/README.md
