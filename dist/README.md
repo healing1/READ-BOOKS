@@ -1,5 +1,6 @@
 # READ BOOKS 0.2.1 — unsigned HAP
 
+- 下载：[GitHub Releases](https://github.com/healing1/READ-BOOKS/releases/latest)
 - 文件：`READ-BOOKS-0.2.1-unsigned.hap`
 - 版本：0.2.1 / versionCode 1000002
 - 构建：2026-09-24，目标 HarmonyOS 6.1.1（API 24），最低兼容 API 12
