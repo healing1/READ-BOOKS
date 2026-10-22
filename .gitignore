@@ -50,6 +50,10 @@ signing.local.*.json
 *.jks
 *.hap
 *.hsp
+# Unsigned release package is published on purpose
+!dist/
+!dist/README.md
+!dist/*.hap
 
 # Generated device captures may contain personal book text and profile data.
 /docs/qa/*
