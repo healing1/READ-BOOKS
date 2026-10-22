@@ -30,6 +30,7 @@ build/
 tmp/
 temp/
 .cache/
+.qoder-credits/
 
 # ---- HarmonyOS / DevEco ----
 .hvigor/

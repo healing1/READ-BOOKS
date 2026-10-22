@@ -4,7 +4,7 @@
 
 ## 如何构建运行
 
-本机工具链、SDK、模拟器与签名材料放在 `C:\Users\27586\DevTools\HarmonyOS`。目前使用 CLT 26.0.0.821 编译，目标系统 HarmonyOS 6.1.1(24)，兼容下限 API12；不是要求设备升级到 API26。
+本机工具链、SDK、模拟器与签名材料放在用户目录下的 `DevTools\HarmonyOS`。目前使用 CLT 26.0.0.821 编译，目标系统 HarmonyOS 6.1.1(24)，兼容下限 API12；不是要求设备升级到 API26。
 
 在仓库根执行：
 
