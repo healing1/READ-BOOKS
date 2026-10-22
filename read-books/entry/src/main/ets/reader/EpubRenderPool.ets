@@ -1,4 +1,4 @@
-/** Three live documents: current, previous and next. No fifty-WebView allocation. */
+/** Four live documents: current, previous and two chapters ahead. */
 export class EpubRenderSlot {
   path: string = '';
   token: string = '';
@@ -18,10 +18,11 @@ export class EpubRenderSlot {
   fragment: string = '';
   target: string = 'null';
   anchor: string = '';
+  startedAt: number = 0;
 }
 
 export class EpubRenderPool {
-  slots: EpubRenderSlot[] = [new EpubRenderSlot(), new EpubRenderSlot(), new EpubRenderSlot()];
+  slots: EpubRenderSlot[] = [new EpubRenderSlot(), new EpubRenderSlot(), new EpubRenderSlot(), new EpubRenderSlot()];
   current: number = -1;
   pending: number = -1;
   find(path: string): number { return this.slots.findIndex((slot: EpubRenderSlot) => slot.path === path); }

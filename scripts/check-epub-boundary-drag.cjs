@@ -9,6 +9,10 @@ const motionCode = ts.transpileModule(fs.readFileSync(path.join(root, 'reader/Pa
 const motion = {}; new Function('exports', motionCode)(motion);
 const out = {}; new Function('exports', 'require', code)(out, () => motion);
 const drag = new out.EpubBoundaryDrag();
+assert(!out.canPromoteSettlingChapter(true, true, -840, 1200), 'an unfinished spread keeps following the finger');
+assert(out.canPromoteSettlingChapter(true, true, -900, 1200), 'new contact completes a nearly settled spread');
+assert(!out.canPromoteSettlingChapter(false, true, -1200, 1200), 'cancelled gestures never promote');
+assert(!out.canPromoteSettlingChapter(true, false, -1200, 1200), 'unready chapters never promote');
 drag.start(900, 300, 4, 5, false, 1200);
 assert(drag.move(300, 301));
 assert.equal(drag.offset, -600); assert.equal(drag.delta, 1); assert.equal(drag.side, 1);
@@ -32,12 +36,28 @@ followup.start(900, 300, false, 1200); assert.equal(followup.finish(880, 600), 0
 followup.start(300, 300, true, 1200); assert.equal(followup.finish(900, 300), 1, 'RTL followup direction');
 followup.start(1100, 300, false, 1200); assert.equal(followup.finish(1100, 300), 1, 'edge tap during native settle');
 followup.start(300, 300, false, 1200); followup.reset(); assert.equal(followup.finish(900, 300), 0, 'cancel/lifecycle clears pending contact');
+followup.start(900, 300, false, 1200, 600, 1);
+assert(followup.move(600, 300));
+assert.equal(followup.gap, 300); assert.equal(followup.content, 0, 'new finger first closes the visible chapter gap');
+assert(followup.move(0, 300));
+assert.equal(followup.gap, 0); assert.equal(followup.content, -300, 'the same finger continues into the next chapter page');
+assert(followup.move(700, 300));
+assert.equal(followup.gap, 400); assert.equal(followup.content, 0, 'reversing returns to the frozen native position');
+followup.start(300, 300, true, 1200, -600, -1);
+assert(followup.move(1200, 300));
+assert.equal(followup.gap, 0); assert.equal(followup.content, 300, 'RTL continuation mirrors the same split');
 const reader = fs.readFileSync(path.join(root, 'pages/EpubReader.ets'), 'utf8');
 assert.match(reader, /point\.windowX/, 'moving Web local coordinates cannot be used for finger motion');
 assert.match(reader, /slot\.page === edge/, 'preview must already be at the first/last screen before the finger starts');
 assert.match(reader, /onTouch\(\(event: TouchEvent\) => this\.settleFollowup\(event\)\)/, 'root retains touches on the incoming surface before it becomes the active Web');
-assert.match(reader, /this\.navigate\(locator\.path, '', locator, this\.queuedTurns\)/, 'followup released before settle completion must survive navigation queue initialization');
-assert.match(reader, /if \(!keepFollowup\) \{ this\.followupInput\.reset\(\); this\.queuedTurns = 0;/, 'leaving/panel/reflow cancels stale followup intents');
+assert.match(reader, /this\.stopTurnAnimator\(\); this\.dragSettling = false/, 'new contact interrupts the current chapter settle');
+assert.match(reader, /this\.finishPending\(id\)/, 'prepared chapter activates without a second load');
+assert.match(reader, /this\.pendingSeekDone = true/, 'continuation must not seek backwards to the chapter edge');
+assert.match(reader, /this\.busy && this\.hasPage && point/, 'rare cold chapters must keep accepting the next swipe');
+assert.match(reader, /this\.queuedTurns = Math\.max\(-16, Math\.min\(16, this\.queuedTurns \+ delta\)\)/,
+  'queued cold swipes stay bounded while the target document finishes layout');
+assert.match(reader, /if \(!keepFollowup\) \{ this\.followupInput\.reset\(\); this\.queuedInput = false; this\.queuedTurns = 0;/,
+  'leaving/panel/reflow cancels stale followup and cold-handoff intents');
 const settings = fs.readFileSync(path.join(root, 'components/ReadingSettingsPanel.ets'), 'utf8');
 assert.match(settings, /id\('reading_settings_panel'\).*backgroundColor\(this\.palette\.chrome\)/);
 assert(!settings.includes("backgroundColor($r('app.color.background'))"));

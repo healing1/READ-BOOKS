@@ -1,5 +1,10 @@
 import { TurnVelocity } from './PageTurnMotion';
 
+/** A new contact should not restart a nearly finished chapter handoff. */
+export function canPromoteSettlingChapter(commits: boolean, ready: boolean, offset: number, width: number): boolean {
+  return commits && ready && width > 0 && Math.abs(offset) >= width * 0.72;
+}
+
 /** Window-coordinate gesture state. No DOM reads or chapter loading in the move path. */
 export class EpubBoundaryDrag {
   down: boolean = false;
@@ -42,12 +47,29 @@ export class EpubBoundaryDrag {
  * switches before Up. The root owns that entire contact; ArkWeb must not replay it. */
 export class EpubFollowupInput {
   down: boolean = false;
+  gap: number = 0;
+  content: number = 0;
+  readonly velocity: TurnVelocity = new TurnVelocity();
+  private originGap: number = 0;
+  private side: number = 1;
   private x: number = 0;
   private y: number = 0;
   private rtl: boolean = false;
   private width: number = 1;
-  start(x: number, y: number, rtl: boolean, width: number): void {
-    this.down = true; this.x = x; this.y = y; this.rtl = rtl; this.width = width;
+  start(x: number, y: number, rtl: boolean, width: number, gap: number = 0, side: number = 1): void {
+    this.down = true; this.x = x; this.y = y; this.rtl = rtl; this.width = Math.max(1, width);
+    this.originGap = gap; this.gap = gap; this.side = side; this.content = 0;
+    this.velocity.start(x, Date.now());
+  }
+  move(x: number, y: number): boolean {
+    if (!this.down) { return false; }
+    this.velocity.sample(x, Date.now());
+    const dx = x - this.x; const dy = y - this.y;
+    if (Math.abs(dx) < 10 || Math.abs(dx) <= Math.abs(dy) * 1.4) { return false; }
+    const total = this.originGap + Math.max(-this.width, Math.min(this.width, dx));
+    this.gap = this.side * Math.max(0, Math.min(this.width, this.side * total)) || 0;
+    this.content = total - this.gap;
+    return true;
   }
   finish(x: number, y: number): number {
     if (!this.down) { return 0; }
@@ -59,5 +81,5 @@ export class EpubFollowupInput {
     if (Math.abs(dx) < 10 && Math.abs(dy) < 10) { return x < this.width * 0.2 ? -1 : x > this.width * 0.8 ? 1 : 0; }
     return 0;
   }
-  reset(): void { this.down = false; }
+  reset(): void { this.down = false; this.gap = 0; this.content = 0; }
 }

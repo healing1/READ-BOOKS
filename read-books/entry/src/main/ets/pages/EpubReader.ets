@@ -1,4 +1,4 @@
-import { router, window, mediaquery, PersistenceV2, curves } from '@kit.ArkUI';
+import { router, window, mediaquery, PersistenceV2, AnimatorResult } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
 import { webview } from '@kit.ArkWeb';
 import { util } from '@kit.ArkTS';
@@ -21,8 +21,8 @@ import { EpubSection } from '../reader/EpubSource';
 import { EpubNavEntry } from '../reader/EpubDocument';
 import { EpubResources, epubUrl, epubRequestPath } from '../reader/EpubResources';
 import { EpubRenderPool } from '../reader/EpubRenderPool';
-import { EpubBoundaryDrag, EpubFollowupInput } from '../reader/EpubBoundaryDrag';
-import { pageSettle } from '../reader/PageTurnMotion';
+import { EpubBoundaryDrag, EpubFollowupInput, canPromoteSettlingChapter } from '../reader/EpubBoundaryDrag';
+import { PageSettle, pageSettle } from '../reader/PageTurnMotion';
 import { WindowMode } from '../utils/WindowMode';
 
 class EpubTocSource implements IDataSource {
@@ -85,7 +85,7 @@ struct EpubReader {
   @Local busy: boolean = true;
   @Local error: string = '';
   @Local source: string = '';
-  @Local sources: string[] = ['', '', ''];
+  @Local sources: string[] = ['', '', '', ''];
   @Local visibleSlot: number = 0;
   @Local outgoingSlot: number = -1;
   @Local dragSlot: number = -1;
@@ -106,16 +106,25 @@ struct EpubReader {
   private sections: EpubSection[] = [];
   private tocSource: EpubTocSource = new EpubTocSource();
   private controller: webview.WebviewController = new webview.WebviewController();
-  private controllers: webview.WebviewController[] = [this.controller, new webview.WebviewController(), new webview.WebviewController()];
+  private controllers: webview.WebviewController[] = [this.controller, new webview.WebviewController(),
+    new webview.WebviewController(), new webview.WebviewController()];
   private pool: EpubRenderPool = new EpubRenderPool();
   private drag: EpubBoundaryDrag = new EpubBoundaryDrag();
   private followupInput: EpubFollowupInput = new EpubFollowupInput();
+  private queuedInput: boolean = false;
   private refresh: ReadingRefresh = new ReadingRefresh();
   private surfaceWidth: number = 1;
   private surfaceHeight: number = 1;
   private dragSettling: boolean = false;
   private dragCommit: boolean = false;
   private dragEpoch: number = 0;
+  private turnAnimator: AnimatorResult | null = null;
+  private settleCommits: boolean = false;
+  private continuationSlot: number = -1;
+  private continuationIncoming: boolean = true;
+  private continuationMoveBusy: boolean = false;
+  private continuationMoveVersion: number = 0;
+  private continuationFraction: number = 0;
   private layoutVersion: number = 0;
   private pendingSeekDone: boolean = false;
   private resources: EpubResources = new EpubResources();
@@ -307,12 +316,14 @@ struct EpubReader {
     config.dark = this.isNight(); config.paper = this.settings.theme === 'paper';
     config.bg = this.palette().bg; config.text = this.palette().text;
     config.reduceMotion = this.settings.reduceMotion;
+    config.warm = id !== this.pool.current;
     return config;
   }
   private prepareSlot(id: number, path: string, index: number, location: EpubLocator | null, fragment: string = ''): void {
     const slot = this.pool.slots[id];
     const reuse: boolean = slot.path === path && slot.loaded;
     slot.path = path; slot.index = index; slot.revision++; slot.version = this.layoutVersion; slot.ready = false;
+    slot.startedAt = Date.now();
     slot.token = 'READBOOKS_' + id + '_' + Date.now() + '_' + slot.revision + ':';
     slot.target = JSON.stringify(location); slot.anchor = fragment;
     if (reuse) { this.layoutSlot(id); }
@@ -339,6 +350,8 @@ struct EpubReader {
       await this.controllers[id].runJavaScript(this.engine);
       if (!this.active || revision !== slot.revision) { return; }
       slot.loaded = true;
+      hilog.info(0, 'ReadBooksEpubPerf', 'htmlLoadedChapter=%{public}d elapsedMs=%{public}d',
+        slot.index, Date.now() - slot.startedAt);
       this.layoutSlot(id);
     } catch (_) {
       if (this.active && revision === slot.revision && this.pool.pending === id) { this.error = '图文排版未能完成，请返回后重试'; this.busy = false; }
@@ -371,6 +384,9 @@ struct EpubReader {
     }
     const prior: number = this.pool.current;
     this.pool.current = id; this.pool.pending = -1; this.controller = this.controllers[id];
+    if (prior >= 0 && prior !== id) {
+      this.controllers[prior].runJavaScript('window.ReadBooks.holdInput(true)').catch(() => {});
+    }
     this.token = slot.token; this.path = slot.path; this.resources.mainPath = slot.path; this.sectionIndex = slot.index;
     this.page = slot.page; this.pages = slot.pages; this.fragment = slot.fragment;
     const locator = new EpubLocator(); locator.path = slot.path; locator.element = slot.element; locator.fraction = slot.fraction; this.locator = locator;
@@ -395,30 +411,36 @@ struct EpubReader {
     clearTimeout(this.prefetchTimer);
     this.prefetchTimer = setTimeout(() => {
       if (!this.active || this.busy || !this.documentReady || !this.foreground) { return; }
-      if (this.resources.prefetchDeferred) { this.scheduleWarm(); return; }
+      // Neighbour layout has a deadline; only distant byte prefetch yields to touch.
+      // Sharing the old 380 ms debounce starved the very next chapter during rapid turns.
       this.resources.prefetchWindow(this.sections.slice(this.sectionIndex, this.sectionIndex + 50).map((section: EpubSection) => section.path));
-      for (const index of [this.sectionIndex + 1, this.sectionIndex - 1]) {
+      const neighbours: number[] = [this.sectionIndex + 1, this.sectionIndex + 2, this.sectionIndex - 1];
+      for (const index of neighbours) {
         if (index < 0 || index >= this.sections.length) { continue; }
         const path: string = this.sections[index].path;
         const existing: number = this.pool.find(path);
         if (existing >= 0 && this.pool.slots[existing].version === this.layoutVersion) {
           const slot = this.pool.slots[existing];
           const edge = index < this.sectionIndex ? slot.pages - 1 : 0;
-          if (slot.ready && slot.page !== edge) {
+          if (slot.ready && slot.page !== edge && existing !== this.dragSlot) {
             slot.ready = false;
             const target = new EpubLocator(); target.path = path; target.fraction = index < this.sectionIndex ? 1 : 0;
             this.controllers[existing].runJavaScript('window.ReadBooks.seek(' + JSON.stringify(target) + ',"")').catch(() => { slot.version = -1; });
           }
-          continue;
+        } else {
+          const keep: string[] = neighbours.filter((other: number) => other !== index && other >= 0 && other < this.sections.length)
+            .map((other: number) => this.sections[other].path);
+          const id: number = this.pool.reserve(path, index, keep);
+          if (id >= 0) {
+            const target = new EpubLocator(); target.path = path; target.fraction = index < this.sectionIndex ? 1 : 0;
+            this.prepareSlot(id, path, index, target);
+          }
         }
-        const other: number = index > this.sectionIndex ? this.sectionIndex - 1 : this.sectionIndex + 1;
-        const keep: string[] = other >= 0 && other < this.sections.length ? [this.sections[other].path] : [];
-        const id: number = this.pool.reserve(path, index, keep);
-        if (id < 0) { continue; }
-        const target = new EpubLocator(); target.path = path; target.fraction = index < this.sectionIndex ? 1 : 0;
-        this.prepareSlot(id, path, index, target);
+        // Two simultaneous Web loads fight over one ZIP descriptor and image decoder.
+        // Complete the immediate next spread before spending resources farther ahead.
+        if (index === this.sectionIndex + 1 && this.readyNeighbour(1) < 0) { return; }
       }
-    }, 140);
+    }, 24);
   }
   private slotMessage(id: number, text: string): boolean {
     const slot = this.pool.slots[id];
@@ -435,8 +457,16 @@ struct EpubReader {
         return true;
       } else if (value.type === 'ready') {
         slot.ready = true;
+        if (value.timing) {
+          hilog.info(0, 'ReadBooksEpubPerf', 'preparedChapter=%{public}d totalMs=%{public}d stagesMs=%{public}s',
+            slot.index, Date.now() - slot.startedAt, value.timing);
+        }
         if (id === this.pool.pending) { this.finishPending(id); }
-        else { hilog.info(0, 'ReadBooksEpubPerf', 'warmChapter=%{public}d slot=%{public}d', slot.index, id); }
+        else {
+          hilog.info(0, 'ReadBooksEpubPerf', 'warmChapter=%{public}d slot=%{public}d readyMs=%{public}d',
+            slot.index, id, Date.now() - slot.startedAt);
+          if (slot.index === this.sectionIndex + 1) { this.scheduleWarm(); }
+        }
         return true;
       } else if (value.type === 'error' && id !== this.pool.current) {
         slot.version = -1;
@@ -525,8 +555,14 @@ struct EpubReader {
   private openPanel(kind: string): void { this.resetDrag(); this.panelKind = kind; this.panel = true; this.session.pause().catch(() => {}); }
 
   private resetDrag(keepFollowup: boolean = false): void {
-    if (!keepFollowup) { this.followupInput.reset(); this.queuedTurns = 0; }
-    if (this.dragSettling && this.pool.current >= 0) {
+    if (!keepFollowup) { this.followupInput.reset(); this.queuedInput = false; this.queuedTurns = 0; }
+    this.stopTurnAnimator();
+    this.continuationMoveVersion++; this.continuationMoveBusy = false;
+    if (this.continuationSlot >= 0) {
+      this.controllers[this.continuationSlot].runJavaScript('window.ReadBooks.externalCancel()').catch(() => {});
+      this.continuationSlot = -1;
+    }
+    if ((this.dragSettling || this.dragSlot >= 0) && this.pool.current >= 0) {
       this.controller.runJavaScript('window.ReadBooks && window.ReadBooks.holdInput(false)').catch(() => {});
     }
     this.refresh.stop();
@@ -575,24 +611,167 @@ struct EpubReader {
     if (event.type === TouchType.Up) { this.settleDrag(this.drag.commit()); }
   }
   private settleFollowup(event: TouchEvent): void {
-    if (!this.active || this.leaving || this.panel || !this.documentReady || this.pool.current < 0) { this.followupInput.reset(); return; }
+    if (!this.active || this.leaving || this.panel || !this.documentReady || this.pool.current < 0) {
+      this.followupInput.reset(); this.queuedInput = false; return;
+    }
     const point = event.type === TouchType.Up ? event.changedTouches[0] : event.touches[0];
-    if (event.type === TouchType.Cancel || !point || (event.type !== TouchType.Up && event.touches.length !== 1)) { this.followupInput.reset(); return; }
-    if (event.type === TouchType.Down && this.dragSettling) {
+    if (this.queuedInput) {
+      if (event.type === TouchType.Cancel || !point) { this.followupInput.reset(); this.queuedInput = false; return; }
+      if (event.type === TouchType.Up) {
+        const delta = this.followupInput.finish(point.windowX, point.windowY);
+        this.queuedInput = false;
+        if (delta) {
+          if (this.busy) { this.queuedTurns = Math.max(-16, Math.min(16, this.queuedTurns + delta)); }
+          else { this.controller.runJavaScript('window.ReadBooks.go(' + delta + ')').catch(() => {}); }
+        }
+      }
+      return;
+    }
+    if (event.type === TouchType.Down && this.busy && this.hasPage && point && event.touches.length === 1) {
+      // A rare cold chapter must not swallow the next swipe while its Web finishes layout.
       const slot = this.pool.slots[this.pool.current];
-      if (!slot.vertical && !slot.selected && point.windowY >= 84 && point.windowY < this.surfaceHeight - 120) {
+      if (!slot.vertical && !slot.selected) {
         this.followupInput.start(point.windowX, point.windowY, slot.rtl, this.surfaceWidth);
+        this.queuedInput = true;
+      }
+      return;
+    }
+    if (event.type === TouchType.Cancel || !point || (event.type !== TouchType.Up && event.touches.length !== 1)) {
+      if (this.followupInput.down) {
+        // Keep the last finger displacement until both surfaces settle home.
+        this.followupInput.down = false; this.finishContinuation(0);
+      }
+      return;
+    }
+    if (event.type === TouchType.Down && this.dragSettling && this.dragSlot >= 0) {
+      const incoming = this.dragSlot;
+      if (canPromoteSettlingChapter(this.settleCommits, this.pool.slots[incoming].ready,
+        this.dragOffset, this.surfaceWidth)) {
+        hilog.info(0, 'ReadBooksEpubPerf', 'fastPromote chapter=%{public}d next=%{public}d', this.sectionIndex, this.pool.slots[incoming].index);
+        // A fast reader can put down another finger before the previous settle ends.
+        // Completing the already-committed pair here prevents each new gesture from
+        // cancelling and restarting its remaining animation indefinitely.
+        const side = this.dragSide;
+        this.stopTurnAnimator();
+        this.continuationSlot = -1; // A prior externalFinish is queued; do not cancel it.
+        this.dragOffset = -side * this.surfaceWidth;
+        this.completeTurn(true);
+        const active = this.pool.current;
+        if (active >= 0 && point.windowY >= 84 && point.windowY < this.surfaceHeight - 120) {
+          const slot = this.pool.slots[active];
+          if (!slot.vertical && !slot.selected) {
+            this.continuationSlot = active; this.continuationIncoming = false;
+            this.continuationMoveVersion++; this.continuationMoveBusy = false;
+            this.followupInput.start(point.windowX, point.windowY, slot.rtl, this.surfaceWidth, 0, side);
+            this.refresh.begin(this.settings.reduceMotion);
+            this.controllers[active].runJavaScript('window.ReadBooks.externalStart()').catch(() => {});
+          }
+        }
+        return;
+      }
+      const id = this.settleCommits ? this.dragSlot : this.pool.current;
+      const slot = this.pool.slots[id];
+      if (!slot.vertical && !slot.selected && point.windowY >= 84 && point.windowY < this.surfaceHeight - 120) {
+        // onFrame owns the actual displayed translation, not the previous animation's target.
+        // Invalidate callbacks BEFORE cancel: Animator.cancel emits a final onFrame.
+        this.stopTurnAnimator(); this.dragSettling = false;
+        this.continuationSlot = id; this.continuationIncoming = this.settleCommits;
+        this.continuationMoveVersion++; this.continuationMoveBusy = false;
+        const gap = this.continuationIncoming ? this.dragSide * this.surfaceWidth + this.dragOffset : this.dragOffset;
+        this.followupInput.start(point.windowX, point.windowY, slot.rtl, this.surfaceWidth, gap,
+          this.continuationIncoming ? this.dragSide : -this.dragSide);
+        this.refresh.begin(this.settings.reduceMotion);
+        this.controllers[id].runJavaScript('window.ReadBooks.externalStart()').catch(() => {});
       }
       return;
     }
     if (!this.followupInput.down) { return; }
     this.resources.deferPrefetch();
+    if (this.followupInput.move(point.windowX, point.windowY)) {
+      this.dragOffset = this.followupInput.gap - (this.continuationIncoming ? this.dragSide * this.surfaceWidth : 0);
+      this.continuationFraction = this.followupInput.content / Math.max(1, this.surfaceWidth);
+      this.sendContinuationMove();
+    }
     if (event.type === TouchType.Up) {
       const delta = this.followupInput.finish(point.windowX, point.windowY);
-      if (!delta) { return; }
-      if (this.dragSettling || this.busy) { this.queuedTurns += delta; }
-      else { this.controller.runJavaScript('window.ReadBooks.go(' + delta + ')').catch(() => {}); }
+      this.finishContinuation(delta);
     }
+  }
+  private sendContinuationMove(): void {
+    if (this.continuationMoveBusy || this.continuationSlot < 0) { return; }
+    const version = this.continuationMoveVersion;
+    const fraction = this.continuationFraction;
+    this.continuationMoveBusy = true;
+    this.controllers[this.continuationSlot].runJavaScript('window.ReadBooks.externalMove(' + fraction + ')').catch(() => {}).then(() => {
+      if (version !== this.continuationMoveVersion) { return; }
+      this.continuationMoveBusy = false;
+      if (this.followupInput.down && fraction !== this.continuationFraction) { this.sendContinuationMove(); }
+    });
+  }
+  private finishContinuation(delta: number): void {
+    if (this.continuationSlot < 0) { return; }
+    const id = this.continuationSlot;
+    const slot = this.pool.slots[id];
+    const outside = slot.page + delta < 0 || slot.page + delta >= slot.pages;
+    const crossesPair = outside && delta === (this.continuationIncoming ? -this.drag.delta : this.drag.delta);
+    const commit = crossesPair ? !this.continuationIncoming : this.continuationIncoming;
+    const advance = outside ? 0 : delta;
+    const carry = outside && !crossesPair ? delta : 0;
+    const destination = commit ? -this.dragSide * this.surfaceWidth : 0;
+    const bodyDistance = (slot.rtl ? 1 : -1) * advance * this.surfaceWidth - this.followupInput.content;
+    const motion = pageSettle(destination - this.dragOffset + bodyDistance, this.surfaceWidth, this.followupInput.velocity.value);
+    if (this.settings.reduceMotion) { motion.duration = 0; }
+    this.continuationMoveVersion++; this.continuationMoveBusy = false;
+    this.dragSettling = true; this.settleCommits = commit;
+    const epoch = this.dragEpoch;
+    const command = 'window.ReadBooks.externalMove(' + this.continuationFraction + ');window.ReadBooks.externalFinish(' + advance + ',' + JSON.stringify(motion) + ');';
+    // Start from the same last finger position. Native surface and inner page use
+    // one duration/curve; no post-handoff go(N) jump and no queue of bridge moves.
+    this.controllers[id].runJavaScript(command).then(() => {
+      if (!this.active || epoch !== this.dragEpoch) { return; }
+      this.animateTurn(destination, motion, () => this.completeTurn(commit, carry));
+    }).catch(() => { if (epoch === this.dragEpoch) { this.resetDrag(); } });
+  }
+  private stopTurnAnimator(): void {
+    this.dragEpoch++;
+    const animation = this.turnAnimator; this.turnAnimator = null;
+    if (animation !== null) {
+      animation.onFrame = (_value: number): void => {};
+      animation.onFinish = (): void => {};
+      animation.onCancel = (): void => {};
+      try { animation.cancel(); } catch (_) {}
+    }
+  }
+  private animateTurn(destination: number, motion: PageSettle, finish: () => void): void {
+    this.stopTurnAnimator();
+    const epoch = this.dragEpoch;
+    this.dragSettling = true;
+    if (this.settings.reduceMotion || motion.duration <= 0) { this.dragOffset = destination; finish(); return; }
+    const animation = this.getUIContext().createAnimator({ duration: motion.duration,
+      easing: 'cubic-bezier(0.2,' + motion.firstY + ',0.55,1)', delay: 0, fill: 'forwards',
+      direction: 'normal', iterations: 1, begin: this.dragOffset, end: destination });
+    this.turnAnimator = animation;
+    animation.setExpectedFrameRateRange(ReadingRefresh.range());
+    animation.onFrame = (value: number): void => { if (this.active && epoch === this.dragEpoch) { this.dragOffset = value; } };
+    animation.onFinish = (): void => {
+      if (!this.active || epoch !== this.dragEpoch) { return; }
+      this.dragOffset = destination; finish();
+    };
+    this.refresh.begin(false); animation.play();
+  }
+  private completeTurn(commit: boolean, carry: number = 0): void {
+    if (!commit) {
+      this.resetDrag();
+      if (carry) { this.controller.runJavaScript('window.ReadBooks.go(' + carry + ')').catch(() => {}); }
+      return;
+    }
+    const id = this.dragSlot;
+    if (id < 0 || !this.pool.slots[id].ready) { this.resetDrag(); return; }
+    this.save(); this.chapterStarted = Date.now(); this.generation++;
+    this.dragCommit = true; this.pool.pending = id; this.pendingSeekDone = true;
+    this.pendingLocator = null; this.pendingFragment = ''; this.queuedTurns = carry;
+    // The continuation may already be displaying page 2. Do not seek back to page 1.
+    this.finishPending(id);
   }
   private settleDrag(commit: boolean): void {
     if (!this.drag.boundary) { this.resetDrag(); return; }
@@ -600,6 +779,13 @@ struct EpubReader {
     const target = this.sectionIndex + delta;
     if (target < 0 || target >= this.sections.length) { this.resetDrag(); return; }
     if (this.dragSlot < 0) {
+      hilog.warn(0, 'ReadBooksEpubPerf', 'coldBoundary=%{public}d target=%{public}d', this.sectionIndex, target);
+      const candidate = this.pool.find(this.sections[target].path);
+      if (candidate >= 0) {
+        const slot = this.pool.slots[candidate];
+        hilog.warn(0, 'ReadBooksEpubPerf', 'coldState slot=%{public}d current=%{public}d pending=%{public}d ready=%{public}s page=%{public}d pages=%{public}d version=%{public}d expected=%{public}d',
+          candidate, this.pool.current, this.pool.pending, slot.ready ? 'yes' : 'no', slot.page, slot.pages, slot.version, this.layoutVersion);
+      } else { hilog.warn(0, 'ReadBooksEpubPerf', 'coldState slot=missing'); }
       this.resetDrag();
       if (commit) {
         const locator = new EpubLocator(); locator.path = this.sections[target].path; locator.fraction = delta < 0 ? 1 : 0;
@@ -608,26 +794,11 @@ struct EpubReader {
       return;
     }
     this.dragSettling = true;
+    this.settleCommits = commit;
     this.controller.runJavaScript('window.ReadBooks.holdInput(true)').catch(() => {});
-    const epoch = ++this.dragEpoch;
     const destination = commit ? -this.dragSide * this.surfaceWidth : 0;
     const motion = pageSettle(destination - this.dragOffset, this.surfaceWidth, this.drag.velocity.value);
-    const duration = this.settings.reduceMotion ? 0 : motion.duration;
-    this.getUIContext().animateTo({ duration: duration, curve: curves.cubicBezierCurve(0.2, motion.firstY, 0.55, 1),
-      expectedFrameRateRange: this.settings.reduceMotion ? undefined : ReadingRefresh.range(), onFinish: () => {
-      if (!this.active || epoch !== this.dragEpoch) { return; }
-      if (!commit) {
-        this.resetDrag(true);
-        const queued = this.queuedTurns; this.queuedTurns = 0;
-        if (queued) { this.controller.runJavaScript('window.ReadBooks.go(' + queued + ')').catch(() => {}); }
-        return;
-      }
-      this.dragCommit = true;
-      const locator = new EpubLocator(); locator.path = this.sections[target].path; locator.fraction = delta < 0 ? 1 : 0;
-      // navigate initializes its queue from carry. Preserve gestures released before
-      // the previous settle finishes, not just contacts whose Up arrives afterwards.
-      this.navigate(locator.path, '', locator, this.queuedTurns);
-    } }, () => { this.dragOffset = destination; });
+    this.animateTurn(destination, motion, () => this.completeTurn(commit));
   }
   private currentBookmark(): Bookmark | undefined { return this.bookmarks.find((bookmark: Bookmark) => bookmark.charOffset === this.positionOffset()); }
   private async bookmark(): Promise<void> {
@@ -730,7 +901,7 @@ struct EpubReader {
   chapterSurface(id: number) {
     if (this.sources[id]) {
       Column() {
-        Web({ src: this.sources[id], controller: this.controllers[id], incognitoMode: true, renderMode: RenderMode.SYNC_RENDER })
+        Web({ src: this.sources[id], controller: this.controllers[id], incognitoMode: true, renderMode: RenderMode.ASYNC_RENDER })
           .id(this.hasPage && this.visibleSlot === id ? 'epub_web' : 'epub_prepared_' + id)
           .width('100%').height('100%').backgroundColor(Color.Transparent)
           .javaScriptAccess(true).fileAccess(false).domStorageAccess(false).databaseAccess(false)
@@ -766,6 +937,7 @@ struct EpubReader {
               this.chapterSurface(0)
               this.chapterSurface(1)
               this.chapterSurface(2)
+              this.chapterSurface(3)
             }
             if (this.controls) {
               Column() {

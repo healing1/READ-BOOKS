@@ -148,7 +148,7 @@ async function main() {
   const reopened = engineHarness(); reopened.layout(config, destination.locator);
   assert.equal(JSON.parse(reopened.state()).page, 1, 'reopen must not fall back one spread');
   const dragging = engineHarness(); dragging.layout(config);
-  const nativeEdge = engineHarness(); nativeEdge.layout({ ...config, nativeBoundary: true }); nativeEdge.go(2); nativeEdge.testAdvanceTime(400);
+  const nativeEdge = engineHarness(); nativeEdge.layout({ ...config, nativeBoundary: true }); nativeEdge.go(1); nativeEdge.go(1); nativeEdge.testAdvanceTime(400);
   const nativeEdgeTransform = nativeEdge.testBody.style.transform;
   const nativeMetrics = nativeEdge.testMetrics();
   nativeEdge.testInput.touchstart({ touches: [{ screenX: 900, screenY: 200, clientX: 800, clientY: 200 }] });
@@ -164,7 +164,7 @@ async function main() {
   nativeEdge.testInput.click({ clientX: 880, target: {}, preventDefault() { cancelledClick = true; } });
   assert(cancelledClick, 'a short cancelled boundary drag without touchmove must not become a click-turn');
   assert.equal(nativeEdge.testMessages.filter(m => m.type === 'turn').length, boundaryReports);
-  const interruptedEdge = engineHarness(); interruptedEdge.layout({ ...config, nativeBoundary: true }); interruptedEdge.go(2);
+  const interruptedEdge = engineHarness(); interruptedEdge.layout({ ...config, nativeBoundary: true }); interruptedEdge.go(1); interruptedEdge.go(1);
   interruptedEdge.testInput.touchstart({ touches: [{ clientX: 900, clientY: 200 }] });
   assert.equal(interruptedEdge.testBody.style.transform, 'translate3d(0px,0,0)');
   interruptedEdge.testInput.touchmove({ touches: [{ clientX: 870, clientY: 200 }], preventDefault() {} });
@@ -181,6 +181,27 @@ async function main() {
   assert.equal(held.state(), heldBefore); assert(heldClick, 'outgoing Web cannot duplicate a root-owned followup turn');
   held.holdInput(false); held.go(1);
   assert.equal(JSON.parse(held.state()).page, 1, 'activation restores input and accepts exactly the retained turn');
+  const continuation = engineHarness(); continuation.layout(config);
+  continuation.externalStart(); continuation.externalMove(-0.3);
+  assert.equal(continuation.testBody.style.transform, 'translate3d(-300px,0,0)', 'incoming prepared page follows the next finger');
+  continuation.externalFinish(1, { duration: 240, firstY: .28 });
+  assert.equal(JSON.parse(continuation.state()).page, 1);
+  assert.match(continuation.testBody.style.transition, /240ms/);
+  continuation.holdInput(false);
+  const hiddenSeek = engineHarness(); hiddenSeek.layout(config);
+  hiddenSeek.seek({ fraction: 1 }, '');
+  await new Promise(resolve => setTimeout(resolve, 95));
+  assert.equal(JSON.parse(hiddenSeek.state()).page, 2);
+  assert.equal(hiddenSeek.testMessages.at(-1).type, 'ready',
+    'a hidden prelaid chapter must acknowledge its edge seek even when animation frames are throttled');
+  const warmInput = engineHarness(); warmInput.layout({ ...config, warm: true });
+  const warmPosition = warmInput.state();
+  warmInput.testInput.touchstart({ touches: [{ clientX: 800, clientY: 200 }] });
+  warmInput.testInput.touchend({ changedTouches: [{ clientX: 200, clientY: 200 }] });
+  warmInput.testInput.click({ clientX: 900, target: {}, preventDefault() {} });
+  assert.equal(warmInput.state(), warmPosition, 'hidden prepared Web must ignore leaked input');
+  warmInput.holdInput(false); warmInput.go(1);
+  assert.equal(JSON.parse(warmInput.state()).page, 1, 'promoted Web accepts input again');
   dragging.testInput.touchstart({ touches: [{ clientX: 800, clientY: 200 }] });
   let prevented = false;
   dragging.testInput.touchmove({ touches: [{ clientX: 710, clientY: 202 }], preventDefault() { prevented = true; } });
@@ -202,7 +223,10 @@ async function main() {
   assert.equal(JSON.parse(dragging.state()).page, 2, 'a fresh tap immediately after a swipe is accepted');
   dragging.go(-1);
   dragging.go(3);
-  assert.deepEqual(dragging.testMessages.at(-1), { type: 'turn', delta: 1, carry: 1 }, 'retain excess fast turns across a chapter boundary');
+  assert.equal(JSON.parse(dragging.state()).page, 2, 'multiple carried turns first present one adjacent page');
+  dragging.testAdvanceTime(400);
+  await new Promise(resolve => setTimeout(resolve, 370));
+  assert.deepEqual(dragging.testMessages.at(-1), { type: 'turn', delta: 1, carry: 1 }, 'carry remaining turns across the boundary without a multi-page flash');
   const idleDrag = engineHarness(); idleDrag.layout(config);
   const beforeIdleContact = idleDrag.testMetrics();
   idleDrag.testInput.touchstart({ touches: [{ clientX: 800, clientY: 200 }] });

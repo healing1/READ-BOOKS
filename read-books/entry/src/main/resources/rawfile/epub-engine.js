@@ -9,6 +9,7 @@
   let layoutEpoch = 0, presented = false, presenting = false, motionUntil = 0;
   let gutter = 0, edgesOpen = false, edgeTimer = 0;
   let inputHeld = false;
+  let replayTurns = 0, replayTimer = 0;
   const html = document.documentElement, body = document.body;
   const style = document.createElement('style');
   style.id = 'readbooks-style';
@@ -115,13 +116,13 @@
     touch.edge = true;
   }
   function closeEdges() { motionUntil = 0; clipEdges(false); }
-  function display(index, animated, velocity = null) {
+  function display(index, animated, velocity = null, sharedMotion = null) {
     const sign = !vertical && direction === 'rtl' ? 1 : -1;
     const origin = touch && !vertical ? touch.position : sign * page * step;
     page = clamp(index, 0, pages - 1);
     clearTimeout(edgeTimer);
     if (!fixed) {
-      const motion = pageSettle(sign * page * step - origin, step, velocity);
+      const motion = sharedMotion || pageSettle(sign * page * step - origin, step, velocity);
       const moving = animated && !config.reduceMotion && motion.duration > 0;
       // Keep the original type area at rest, but let moving text reach the physical screen edge.
       // The Web viewport spans the whole screen; this clip changes only at gesture boundaries.
@@ -155,9 +156,13 @@
   }
   function layout(next, target) {
     applying = true;
+    clearTimeout(replayTimer); replayTurns = 0;
     layoutEpoch++;
     const current = target || (token ? locator() : null);
     config = next; token = next.token; fixed = !!next.fixed;
+    // ASYNC_RENDER Web surfaces can receive input even under an opaque-zero
+    // ArkUI wrapper. Warm documents must never turn themselves off their edge.
+    inputHeld = !!next.warm;
     clearTimeout(edgeTimer); edgesOpen = false; motionUntil = 0; touch = null;
     gutter = clamp(Number(next.gutter) || 0, 0, Math.max(0, (innerWidth - 120) / 2));
     html.style.clipPath = `inset(0px ${gutter}px)`;
@@ -276,9 +281,31 @@
   function go(delta, velocity = null) {
     if (!Number.isFinite(delta) || !Math.trunc(delta)) return;
     delta = Math.trunc(delta);
-    if (page + delta < 0) emit({ type: 'turn', delta: -1, carry: page + delta + 1 });
-    else if (page + delta >= pages) emit({ type: 'turn', delta: 1, carry: page + delta - pages });
-    else { display(page + delta, true, velocity); restore = locator(); }
+    // A cold handoff may carry multiple inputs. Present each page, never compress
+    // three pages into the same 320 ms translation used by a single tap.
+    if (Math.abs(delta) > 1) {
+      replayTurns += delta - Math.sign(delta);
+      delta = Math.sign(delta);
+    }
+    if (page + delta < 0 || page + delta >= pages) {
+      const carry = replayTurns; replayTurns = 0; clearTimeout(replayTimer);
+      emit({ type: 'turn', delta: Math.sign(delta), carry });
+      return;
+    }
+    display(page + delta, true, velocity); restore = locator();
+    scheduleReplay();
+  }
+  function scheduleReplay() {
+    clearTimeout(replayTimer);
+    if (!replayTurns) return;
+    replayTimer = setTimeout(() => {
+      if (touch || inputHeld || Date.now() < motionUntil) { scheduleReplay(); return; }
+      const delta = Math.sign(replayTurns); replayTurns -= delta;
+      if (page + delta < 0 || page + delta >= pages) {
+        const carry = replayTurns; replayTurns = 0;
+        emit({ type: 'turn', delta, carry });
+      } else go(delta);
+    }, Math.max(32, motionUntil - Date.now() + 16));
   }
   document.addEventListener('click', event => {
     if (inputHeld || Date.now() < suppressClickUntil) { event.preventDefault(); return; }
@@ -320,7 +347,7 @@
     else { if (touch && (touch.dragging || touch.paused)) display(page, true, 0); touch = null; }
   }, { passive: true });
   document.addEventListener('touchmove', e => {
-    if (!touch || vertical || applying || e.touches.length !== 1 || getSelection().toString()) return;
+    if (inputHeld || !touch || vertical || applying || e.touches.length !== 1 || getSelection().toString()) return;
     sampleVelocity(e.touches[0]);
     const dx = pointerX(e.touches[0]) - touch.x, dy = pointerY(e.touches[0]) - touch.y;
     if (!touch.dragging && (Math.abs(dx) < 10 || Math.abs(dx) <= Math.abs(dy) * 1.4)) return;
@@ -338,7 +365,7 @@
     body.style.transform = `translate3d(${touch.position}px,0,0)`;
   }, { passive: false });
   document.addEventListener('touchend', e => {
-    if (!touch) return;
+    if (inputHeld || !touch) return;
     if (touch.edge) { clearTimeout(edgeTimer); closeEdges(); suppressClickUntil = Date.now() + 500; touch = null; return; }
     if (!e.changedTouches.length || getSelection().toString()) {
       if (touch.dragging || touch.paused) display(page, true, 0);
@@ -374,7 +401,13 @@
     display(restoreLocator(value), false);
     if (fragment) anchor(fragment);
     restore = locator();
-    await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+    // Hidden warm Web surfaces may throttle requestAnimationFrame indefinitely.
+    // The target transform is synchronous; bound the paint acknowledgement so an
+    // already laid-out next chapter cannot remain permanently marked unready.
+    await Promise.race([
+      new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))),
+      new Promise(resolve => setTimeout(resolve, 80))
+    ]);
     if (seekingToken === token) { report(); emit({ type: 'ready' }); }
   }
   function holdInput(held) {
@@ -382,7 +415,33 @@
     inputHeld = !!held; touch = null;
     suppressClickUntil = held ? Date.now() + 500 : 0;
   }
-  window.ReadBooks = { layout, go, anchor, holdInput, seek: (value, fragment) => { void seek(value, fragment); },
+  function externalStart() {
+    let origin = (direction === 'rtl' ? 1 : -1) * page * step;
+    if (!fixed && Date.now() < motionUntil) {
+      try { origin = new DOMMatrixReadOnly(getComputedStyle(body).transform).m41; } catch (_) {}
+    }
+    inputHeld = true;
+    clearTimeout(edgeTimer); motionUntil = 0;
+    touch = { external: true, dragging: true, origin, position: origin };
+    body.style.transition = 'none';
+    if (!fixed) body.style.transform = `translate3d(${origin}px,0,0)`;
+  }
+  function externalMove(fraction) {
+    if (!touch || !touch.external || !Number.isFinite(fraction) || fixed) return;
+    touch.position = touch.origin + clamp(fraction, -1, 1) * innerWidth;
+    clipEdges(true);
+    body.style.transform = `translate3d(${touch.position}px,0,0)`;
+  }
+  function externalFinish(delta, motion) {
+    if (!touch || !touch.external) return;
+    display(page + Math.max(-1, Math.min(1, delta)), true, null, motion);
+    restore = locator(); touch = null;
+  }
+  function externalCancel() {
+    if (touch && touch.external) display(page, false);
+    touch = null; inputHeld = false;
+  }
+  window.ReadBooks = { layout, go, anchor, holdInput, externalStart, externalMove, externalFinish, externalCancel, seek: (value, fragment) => { void seek(value, fragment); },
     prepare: (next, value) => { presented = false; presenting = false; layout(next, value); void present(); },
     present: () => { void present(); }, state: () => JSON.stringify({ page, pages, locator: locator() }) };
 })();

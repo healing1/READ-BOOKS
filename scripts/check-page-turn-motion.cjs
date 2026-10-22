@@ -29,7 +29,8 @@ assert.equal(out.pageSettle(1000, 1000).duration, 320, 'a tap has enough visible
 assert(out.pageSettle(-800, 1000, -100).duration >= 210, 'even an extreme flick cannot collapse most of a page into 80ms');
 assert.match(engine, /cubic-bezier\(\.2,\$\{motion\.firstY\},\.55,1\)/);
 const reader = fs.readFileSync(path.join(root, 'ets/pages/EpubReader.ets'), 'utf8');
-assert.match(reader, /cubicBezierCurve\(0\.2, motion\.firstY, 0\.55, 1\)/);
+assert.match(reader, /easing: 'cubic-bezier\(0\.2,' \+ motion\.firstY \+ ',0\.55,1\)'/);
+assert.match(reader, /animation\.onFrame = \(value: number\)/, 'native displayed translation is available to the next contact');
 assert(!reader.includes('setWebDebuggingAccess(true)'), 'temporary inspection access must not ship');
 const nativeVelocity = new out.TurnVelocity(); nativeVelocity.start(900, 0);
 for (const [time, x] of [[10, 880], [20, 840], [30, 800], [40, 820], [50, 830], [170, 830], [185, 850], [200, 880]]) {
